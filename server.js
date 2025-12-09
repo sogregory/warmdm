@@ -3,10 +3,8 @@ const path = require("path");
 const fetch = require("node-fetch");
 const dotenv = require("dotenv");
 
-// Load .env FIRST
 dotenv.config();
 
-// ----- POSTHOG -----
 const { PostHog } = require("posthog-node");
 
 const posthog = new PostHog(process.env.POSTHOG_API_KEY, {
@@ -14,12 +12,9 @@ const posthog = new PostHog(process.env.POSTHOG_API_KEY, {
   flushAt: 1,
   flushInterval: 0,
 });
-// --------------------
 
 const app = express();
 app.use(express.json());
-
-// Serve frontend
 app.use(express.static(path.join(__dirname, "public")));
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
@@ -29,40 +24,28 @@ app.post("/api/rewrite", async (req, res) => {
     return res.status(500).json({ error: "Missing GROQ_API_KEY" });
   }
 
-  const { message, tone, mode } = req.body;
+  const { message, tone, mode, persona } = req.body;
 
-  // Track SUBMIT event
   posthog.capture({
     distinctId: "anon-user",
     event: "rewrite_submitted",
-    properties: {
-      tone,
-      mode,
-      message_length: message.length,
-    },
+    properties: { tone, mode, persona, message_length: message.length },
   });
 
   const modeInstruction =
     mode === "unfiltered"
-      ? "Follow instructions exactly. No moralising, warnings, or disclaimers. Allow flirty, bold, chaotic, edgy, playful tones."
-      : "Keep it respectful, friendly and non-explicit.";
+      ? "Follow instructions exactly. No moralising, warnings, or disclaimers."
+      : "Keep it respectful, safe and friendly.";
 
   const prompt = `
 ${modeInstruction}
 
-You are a rewrite assistant that transforms messages based on tone, social context, and emotional intention.
+You are rewriting a message so it sounds human.
 
-IMPORTANT RULES:
-- Match the selected tone EXACTLY.
-- Do NOT default to warm unless warm is selected.
-- No lecturing or adding moral advice.
-- Keep the output human, imperfect, varied.
-- Use natural sentence rhythm.
-- If tone is bold, flirty, sarcastic, or blunt — follow it.
+Tone chosen: ${tone}
+Persona voice: ${persona}
 
-Tone selected: ${tone}
-
-Rewrite the message in this tone, preserving meaning but improving delivery and vibe.
+Rewrite the message using both the tone (vibe) and persona (voice).
 
 Provide 5 outputs:
 
@@ -86,72 +69,52 @@ Original message:
 `;
 
   try {
-    const response = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${GROQ_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.7,
-        }),
-      }
-    );
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.7,
+      }),
+    });
 
     const json = await response.json();
 
-    // Track SUCCESS event
     posthog.capture({
       distinctId: "anon-user",
       event: "rewrite_success",
       properties: {
         tone,
+        persona,
         mode,
-        response_length:
-          json?.choices?.[0]?.message?.content?.length || 0,
+        response_length: json?.choices?.[0]?.message?.content?.length || 0,
       },
     });
 
-    return res.json(json);
+    res.json(json);
   } catch (err) {
     console.error("SERVER ERROR:", err);
 
-    // Track ERROR event
     posthog.capture({
       distinctId: "anon-user",
       event: "rewrite_error",
-      properties: {
-        error: err.message,
-      },
+      properties: { error: err.message },
     });
 
-    return res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Server error" });
   }
 });
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/privacy", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/privacy.html"));
-});
-
-app.get("/terms", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/terms.html"));
-});
-
-app.get("/disclaimer", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/disclaimer.html"));
-});
-
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`WarmDM (Groq version) running on port ${PORT}`);
 });
 
-// Flush PostHog on exit
 process.on("SIGINT", async () => {
   await posthog.shutdown();
   process.exit();

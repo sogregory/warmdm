@@ -325,6 +325,19 @@ select {
   margin-top: 3px;
 }
 
+/* Fix long output text overflowing */
+.output-section pre {
+  white-space: pre-wrap;      /* Wrap long lines */
+  word-wrap: break-word;      /* Break long words if needed */
+  overflow-x: auto;           /* Allow horizontal scrolling only if needed */
+  background: #fafafa;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 /* RESPONSIVE */
 @media (max-width: 800px) {
   .feature-grid {

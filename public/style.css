@@ -81,7 +81,7 @@ textarea {
   border-radius: 10px;
   border: 1px solid #e5e7eb;
   resize: none;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   background: #f9fafb;
 }
 
@@ -91,61 +91,90 @@ textarea:focus {
   background: #ffffff;
 }
 
-/* Controls */
-.controls-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
+/* ===== NEW CONTROL GROUPS ===== */
+
+.control-group {
+  margin-bottom: 22px;
 }
 
-select {
-  padding: 8px 12px;
-  font-size: 0.95rem;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-}
-
-.toggle-label {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  cursor: pointer;
-  gap: 6px;
+.control-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 8px;
   color: #374151;
 }
 
-.persona-row {
+/* Row of pill buttons */
+.pill-row {
   display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-  margin-top: 2px;
 }
 
-.persona-label {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-right: 4px;
-}
-
-.persona-btn {
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
+/* Pill buttons */
+.pill-btn {
+  border: 1px solid #d1d5db;
   border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 0.8rem;
+  background: #ffffff;
+  padding: 6px 14px;
+  font-size: 0.83rem;
   cursor: pointer;
   color: #374151;
+  transition: 0.12s ease;
 }
 
-.persona-btn.active {
+.pill-btn:hover {
+  background: #f3f4f6;
+}
+
+.pill-btn.active {
   background: #6366f1;
-  color: #ffffff;
+  color: white;
   border-color: #4f46e5;
+}
+
+/* ===== UNFILTERED + TOOLTIP ===== */
+
+.unfiltered-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.unfiltered-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* Tooltip (Style B) */
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: 230px;
+  background: #ffffff;
+  color: #111827;
+  text-align: left;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  position: absolute;
+  top: 28px;
+  left: 0;
+  z-index: 16;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  transition: opacity 0.18s ease;
+}
+
+.unfiltered-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Button */
@@ -170,27 +199,27 @@ select {
   transform: translateY(1px);
 }
 
-/* Output area */
-.output-section h3 {
-  margin-top: 8px;
-  margin-bottom: 10px;
-  font-size: 1.05rem;
-  font-weight: 600;
+/* ====== OUTPUT AREA ====== */
+
+.output-section {
+  margin-top: 18px;
 }
 
-.output-section p {
-  background: #f3f4f6;
-  padding: 10px 12px;
+.output-section pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  background: #fafafa;
+  padding: 16px;
   border-radius: 8px;
-  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
   line-height: 1.5;
-  font-size: 0.96rem;
 }
 
 /* INFO / LANDING CONTENT BELOW TOOL */
 .info-section {
   margin-top: 28px;
-  background: transparent;
 }
 
 .info-section h3 {
@@ -229,10 +258,9 @@ select {
 
 .feature-card p {
   font-size: 0.9rem;
-  margin-bottom: 0;
 }
 
-/* Lists */
+/* Bullet list */
 .bullet-list {
   padding-left: 18px;
   margin-top: 6px;
@@ -273,7 +301,7 @@ select {
   height: 18px;
   border-radius: 999px;
   background: #6366f1;
-  color: #ffffff;
+  color: white;
   font-size: 0.76rem;
   font-weight: 700;
 }
@@ -288,12 +316,12 @@ select {
 
 /* FAQ */
 .faq-section {
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
 .faq-item {
-  margin-top: 10px;
-  padding: 10px 0;
+  margin-top: 12px;
+  padding: 12px 0;
   border-top: 1px solid #e5e7eb;
 }
 
@@ -325,30 +353,15 @@ select {
   margin-top: 3px;
 }
 
-/* Fix long output text overflowing */
-.output-section pre {
-  white-space: pre-wrap;      /* Wrap long lines */
-  word-wrap: break-word;      /* Break long words if needed */
-  overflow-x: auto;           /* Allow horizontal scrolling only if needed */
-  background: #fafafa;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 800px) {
   .feature-grid {
     grid-template-columns: 1fr;
   }
-
   .inline-steps {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .title {
     font-size: 1.45rem;
   }

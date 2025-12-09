@@ -1,43 +1,60 @@
-// --- PERSONA BUTTON HANDLING ---
-document.querySelectorAll(".persona-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".persona-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+// ===== VIBE SELECTION =====
+const vibeButtons = document.querySelectorAll('.vibe-btn');
+let selectedVibe = "AI-Undetectable";
+
+vibeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    vibeButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedVibe = btn.dataset.vibe;
   });
 });
 
-// --- MAIN REWRITE LOGIC ---
+// ===== PERSONA SELECTION =====
+const personaButtons = document.querySelectorAll('.persona-btn');
+let selectedPersona = "Default";
+
+personaButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    personaButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedPersona = btn.dataset.persona;
+  });
+});
+
+// ===== REWRITE LOGIC =====
 document.getElementById("rewriteBtn").addEventListener("click", async () => {
   const msg = document.getElementById("inputMessage").value.trim();
-  const tone = document.getElementById("toneSelect").value;
   const mode = document.getElementById("unfilteredToggle").checked ? "unfiltered" : "safe";
-  const persona =
-    document.querySelector(".persona-btn.active")?.dataset.persona || "Default";
+  const output = document.getElementById("outputText");
 
   if (!msg) {
-    alert("Please paste a message first.");
+    output.textContent = "Please paste a message first.";
     return;
   }
 
-  const output = document.getElementById("outputSection");
-  output.innerHTML = "<p>Rewriting... please wait.</p>";
+  output.textContent = "Rewriting... please wait.";
 
   try {
-    const response = await fetch("/api/rewrite", {
+    const res = await fetch("/api/rewrite", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: msg, tone, mode, persona }),
+      body: JSON.stringify({
+        message: msg,
+        vibe: selectedVibe,
+        persona: selectedPersona,
+        mode
+      })
     });
 
-    const data = await response.json();
-
+    const data = await res.json();
     const text =
       data?.choices?.[0]?.message?.content ||
-      "No response. Try again or check server.";
+      "No response. Something went wrong.";
 
-    output.innerHTML = `<pre>${text}</pre>`;
+    output.textContent = text;
   } catch (err) {
     console.error(err);
-    output.innerHTML = "<p>Error. Could not rewrite message.</p>";
+    output.textContent = "Error. Could not rewrite the message.";
   }
 });

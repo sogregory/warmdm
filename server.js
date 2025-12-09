@@ -136,7 +136,7 @@ Original message:
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log("WarmDM (Groq version) running on port ${PORT}");
+  console.log(`WarmDM (Groq version) running on port ${PORT}`);
 });
 
 // Flush PostHog on exit

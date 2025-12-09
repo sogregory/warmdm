@@ -7,7 +7,7 @@
   <title>WarmDM – Rewrite any message so it sounds human</title>
 
   <meta name="description"
-        content="WarmDM is an AI message rewriter that makes any DM, email or post sound human, natural and non-cringe. No AI vibes, just real tone." />
+        content="WarmDM rewrites any DM, email, or outreach so it sounds human, natural and non-cringe. No AI vibes — just real tone." />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="style.css" />
@@ -17,158 +17,87 @@
 
   <div class="page-shell">
 
-    <!-- HEADER + LOGO -->
     <header class="header">
       <h1 class="logo">
         <span class="logo-icon">WM</span>
         WarmDM
       </h1>
 
-      <h2 class="title">
-        Rewrite any message so it sounds human.
-      </h2>
-
-      <p class="subtitle">
-        No cringe. No AI vibes. Just natural tone.
-      </p>
+      <h2 class="title">Rewrite any message so it sounds human.</h2>
+      <p class="subtitle">No cringe. No AI vibes. Just natural tone.</p>
     </header>
 
-    <!-- TOOL (TOP OF PAGE) -->
+    <!-- ===================== TOOL ===================== -->
     <main>
-      <section class="app-container" id="app">
-        <section class="input-section">
-          <textarea
-            id="inputMessage"
-            placeholder="Paste your message — I won’t judge.">
-          </textarea>
+      <section class="app-container">
 
-          <div class="controls-row">
-            <select id="toneSelect">
-              <option value="Warm">Warm</option>
-              <option value="Casual">Casual</option>
-              <option value="Authority">Authority</option>
-              <option value="Cheeky">Cheeky</option>
-              <option value="AI-Undetectable">AI-Undetectable</option>
-            </select>
+        <textarea id="inputMessage"
+          class="message-box"
+          placeholder="Paste your message — I won’t judge."></textarea>
 
-            <label class="toggle-label">
-              <input type="checkbox" id="unfilteredToggle" />
-              Unfiltered 😈
-            </label>
-          </div>
+        <!-- TONE BUTTONS -->
+        <div class="section-label">How should it sound?</div>
 
-          <div class="persona-row">
-            <span class="persona-label">Personas:</span>
-              <button type="button" class="persona-btn active" data-persona="Default">Default</button>
-              <button type="button" class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
-              <button type="button" class="persona-btn" data-persona="Dry professional">Dry professional</button>
-              <button type="button" class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
-              <button type="button" class="persona-btn" data-persona="Soft apology">Soft apology</button>
-          </div>
+        <div class="button-row" id="toneButtons">
+          <button class="tone-btn active" data-tone="Warm">Warm</button>
+          <button class="tone-btn" data-tone="Casual">Casual</button>
+          <button class="tone-btn" data-tone="Authority">Authority</button>
+          <button class="tone-btn" data-tone="Cheeky">Cheeky</button>
+          <button class="tone-btn" data-tone="AI-Undetectable">Undetectable</button>
+        </div>
 
-          <p class="persona-hint">
-            <strong>Tone = vibe.</strong> <strong>Persona = voice.</strong>
-            Combine both for the perfect rewrite.
-          </p>
+        <!-- PERSONA BUTTONS -->
+        <div class="section-label">Who should say it?</div>
 
-          <button id="rewriteBtn" class="primary-btn">
-            Make It Sound Human
-          </button>
-        </section>
+        <div class="button-row" id="personaButtons">
+          <button class="persona-btn active" data-persona="Default">Default</button>
+          <button class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
+          <button class="persona-btn" data-persona="Dry professional">Dry professional</button>
+          <button class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
+          <button class="persona-btn" data-persona="Soft apology">Soft apology</button>
+        </div>
+
+        <!-- UNFILTERED -->
+        <label class="toggle-label">
+          <input type="checkbox" id="unfilteredToggle" />
+          Unfiltered 😈
+        </label>
+
+        <button id="rewriteBtn" class="primary-btn">
+          Make It Sound Human
+        </button>
 
         <section class="output-section" id="outputSection"></section>
+
       </section>
 
-      <!-- BELOW-THE-FOLD INFO / LANDING CONTENT -->
+      <!-- LANDING PAGE SECTIONS (unchanged) -->
       <section class="info-section">
         <h3>What WarmDM actually does</h3>
         <p>
-          WarmDM is a small, focused AI message rewriter. You paste a DM, email,
-          LinkedIn message, sales opener, or “uh… not my best work” text,
-          and it rewrites it so it sounds human — not like a robot trying to sell
-          you crypto in 2018.
+          WarmDM rewrites messages with tone, not templates — helping you sound like a
+          real person instead of a robot trying to network politely.
         </p>
-        <p>
-          Instead of obsessing over grammar, WarmDM focuses on tone:
-          how your message <em>feels</em> when someone reads it. Warm, casual,
-          cheeky, more authoritative — you pick the vibe, it rewrites the message.
-        </p>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>AI message rewriter</h4>
-            <p>
-              Paste anything and get a human-sounding version back in seconds.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h4>Tone that actually fits</h4>
-            <p>
-              Switch between Warm, Casual, Authority, Cheeky, or AI-Undetectable.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h4>Built for real conversations</h4>
-            <p>
-              Use it for Twitter/X DMs, sales outreach, dating apps, intros,
-              support messages — anywhere sounding human matters more than sounding
-              “perfect”.
-            </p>
-          </div>
-        </div>
       </section>
 
       <section class="info-section">
-        <h3>Who WarmDM is for</h3>
-        <ul class="bullet-list">
-          <li><strong>Founders & indie hackers</strong> who hate writing cold outreach.</li>
-          <li><strong>Creators & marketers</strong> who want higher reply rates.</li>
-          <li><strong>Operators & PMs</strong> sending “one shot” messages.</li>
-          <li><strong>Anyone</strong> who reads their message and thinks: “Nope, that’s not it.”</li>
-        </ul>
-      </section>
-
-      <section class="info-section">
-        <h3>How it works (in 20 seconds)</h3>
+        <h3>How it works</h3>
         <ol class="inline-steps">
           <li><span>1</span> Paste your message.</li>
-          <li><span>2</span> Pick a tone + persona.</li>
-          <li><span>3</span> Click “Make It Sound Human”.</li>
-          <li><span>4</span> Copy the version that works.</li>
+          <li><span>2</span> Pick how it should sound.</li>
+          <li><span>3</span> Choose a persona.</li>
+          <li><span>4</span> Click “Make It Sound Human”.</li>
         </ol>
-      </section>
-
-      <section class="info-section seo-block">
-        <h3>WarmDM as an AI message rewriter</h3>
-        <p>
-          WarmDM keeps your meaning but rewrites your delivery so it sounds
-          like a real human wrote it — softer, smoother, funnier, or more confident.
-        </p>
       </section>
 
       <section class="info-section faq-section">
         <h3>FAQ</h3>
 
         <div class="faq-item">
-          <h4>Is WarmDM the same as Grammarly?</h4>
-          <p>No. Grammarly focuses on correctness. WarmDM focuses on tone.</p>
+          <h4>Is this the same as Grammarly?</h4>
+          <p>No. Grammarly fixes correctness. WarmDM fixes tone — the part that makes people actually reply.</p>
         </div>
 
-        <div class="faq-item">
-          <h4>Does WarmDM store my messages?</h4>
-          <p>
-            Messages are processed but not stored for product training.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Will there be paid plans?</h4>
-          <p>
-            Yes — once traction proves what people need.
-          </p>
-        </div>
       </section>
     </main>
 

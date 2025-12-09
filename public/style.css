@@ -5,157 +5,307 @@
   box-sizing: border-box;
 }
 
-/* GENERAL */
+/* PAGE WRAPPER */
 body {
-  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
   background: #f8f9fb;
-  color: #1a1a1a;
+  color: #111827;
   min-height: 100vh;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
 }
 
-.app-container {
-  width: 100%;
-  max-width: 750px;
+.page-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px 40px;
 }
 
 /* HEADER */
 .header {
-  text-align: center;
-  margin-bottom: 30px;
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.logo-icon {
+  background: #6366f1;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 18px;
 }
 
 .title {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  margin-bottom: 10px;
-  color: #111;
+  margin-bottom: 6px;
+  color: #111827;
 }
 
 .subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
+  font-size: 0.98rem;
+  color: #4b5563;
 }
 
-/* INPUT SECTION */
-.input-section {
-  background: white;
-  padding: 20px;
+/* APP / TOOL */
+.app-container {
+  margin-bottom: 28px;
+}
+
+.input-section,
+.output-section {
+  background: #ffffff;
+  padding: 18px 18px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-  margin-bottom: 30px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.input-section {
+  margin-bottom: 10px;
 }
 
 textarea {
   width: 100%;
   height: 130px;
-  padding: 15px;
-  font-size: 1rem;
+  padding: 12px 14px;
+  font-size: 0.98rem;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #e5e7eb;
   resize: none;
-  margin-bottom: 15px;
-  background: #fafafa;
+  margin-bottom: 12px;
+  background: #f9fafb;
 }
 
 textarea:focus {
   outline: none;
   border-color: #6366f1;
-  background: #fff;
+  background: #ffffff;
 }
 
+/* Controls */
 .controls-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
-/* Tone Dropdown */
 select {
-  padding: 10px 14px;
-  font-size: 1rem;
+  padding: 8px 12px;
+  font-size: 0.95rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background: white;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
 }
 
-/* Toggle */
 .toggle-label {
   display: flex;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   gap: 6px;
+  color: #374151;
 }
 
-/* BUTTON */
+/* Button */
 .primary-btn {
   width: 100%;
   background: #6366f1;
-  color: white;
-  padding: 15px;
+  color: #ffffff;
+  padding: 12px 16px;
   border: none;
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.2s ease;
+  transition: background 0.18s ease, transform 0.05s ease;
 }
 
 .primary-btn:hover {
-  background: #4f4ff0;
+  background: #4f46e5;
 }
 
-/* OUTPUT SECTION */
-.output-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+.primary-btn:active {
+  transform: translateY(1px);
 }
 
+/* Output area */
 .output-section h3 {
-  margin-top: 20px;
+  margin-top: 8px;
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
 .output-section p {
   background: #f3f4f6;
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   line-height: 1.5;
+  font-size: 0.96rem;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* INFO / LANDING CONTENT BELOW TOOL */
+.info-section {
+  margin-top: 28px;
+  background: transparent;
+}
+
+.info-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.info-section p {
+  font-size: 0.96rem;
+  color: #374151;
+  line-height: 1.6;
   margin-bottom: 10px;
 }
 
-.logo-icon {
-  background: #6366f1;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-weight: 900;
-  font-size: 20px;
+/* Feature grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 10px;
 }
 
-/* Mobile */
-@media(max-width: 500px) {
+.feature-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px 12px 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.feature-card h4 {
+  font-size: 0.98rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Lists */
+.bullet-list {
+  padding-left: 18px;
+  margin-top: 6px;
+}
+
+.bullet-list li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* Steps */
+.inline-steps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.inline-steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.inline-steps li span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+/* SEO block */
+.seo-block {
+  background: #f3f4ff;
+  border-radius: 10px;
+  padding: 14px 14px 16px;
+  border: 1px solid #e5e7ff;
+}
+
+/* FAQ */
+.faq-section {
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.faq-item:first-of-type {
+  border-top: none;
+}
+
+.faq-item h4 {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.faq-item p {
+  font-size: 0.92rem;
+  color: #4b5563;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 30px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.footer-sub {
+  margin-top: 3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inline-steps {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .title {
     font-size: 1.45rem;
-  }
-  .primary-btn {
-    font-size: 1rem;
   }
 }

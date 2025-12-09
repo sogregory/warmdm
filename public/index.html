@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WarmDM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <header class="header">
+      <h1 class="title">Rewrite any message so it sounds human.</h1>
+      <p class="subtitle">No cringe. No AI vibes. Just natural tone.</p>
+    </header>
+
+    <section class="input-section">
+
+      <textarea
+        id="inputMessage"
+        placeholder="Paste your message — I won’t judge."
+      ></textarea>
+
+      <div class="controls-row">
+
+        <select id="toneSelect">
+          <option value="Warm">Warm</option>
+          <option value="Casual">Casual</option>
+          <option value="Authority">Authority</option>
+          <option value="Cheeky">Cheeky</option>
+          <option value="AI-Undetectable">AI-Undetectable</option>
+        </select>
+
+        <label class="toggle-label">
+          <input type="checkbox" id="unfilteredToggle" />
+          Unfiltered 😈
+        </label>
+
+      </div>
+
+      <button id="rewriteBtn" class="primary-btn">
+        Make It Sound Human
+      </button>
+
+    </section>
+
+    <section class="output-section" id="outputSection">
+      <!-- AI rewrites appear here -->
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GENERAL */
+body {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background: #f8f9fb;
+  color: #1a1a1a;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 750px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* INPUT SECTION */
+.input-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+textarea {
+  width: 100%;
+  height: 130px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  resize: none;
+  margin-bottom: 15px;
+  background: #fafafa;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: #fff;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+/* Tone Dropdown */
+select {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+/* Toggle */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  gap: 6px;
+}
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  background: #6366f1;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #4f4ff0;
+}
+
+/* OUTPUT SECTION */
+.output-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.output-section h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.output-section p {
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Mobile */
+@media(max-width: 500px) {
+  .title {
+    font-size: 1.45rem;
+  }
+  .primary-btn {
+    font-size: 1rem;
+  }
+}

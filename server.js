@@ -133,8 +133,10 @@ Original message:
   }
 });
 
-app.listen(3000, () => {
-  console.log("WarmDM running at http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log("WarmDM (Groq version) running on port ${PORT}");
 });
 
 // Flush PostHog on exit

@@ -117,6 +117,37 @@ select {
   color: #374151;
 }
 
+.persona-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+
+.persona-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-right: 4px;
+}
+
+.persona-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #374151;
+}
+
+.persona-btn.active {
+  background: #6366f1;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
 /* Button */
 .primary-btn {
   width: 100%;

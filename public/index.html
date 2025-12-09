@@ -33,102 +33,88 @@
       </p>
     </header>
 
-    <!-- ======== TOOL ======== -->
+    <!-- TOOL (TOP OF PAGE) -->
     <main>
       <section class="app-container" id="app">
-
         <section class="input-section">
           <textarea
             id="inputMessage"
-            placeholder="Paste your message — I won’t judge."
-          ></textarea>
+            placeholder="Paste your message — I won’t judge.">
+          </textarea>
 
-          <!-- VIBE ROW -->
-          <div class="control-group">
-            <span class="control-label">Vibe:</span>
+          <div class="controls-row">
+            <select id="toneSelect">
+              <option value="Warm">Warm</option>
+              <option value="Casual">Casual</option>
+              <option value="Authority">Authority</option>
+              <option value="Cheeky">Cheeky</option>
+              <option value="AI-Undetectable">AI-Undetectable</option>
+            </select>
 
-            <div class="pill-row" id="vibeRow">
-              <button class="pill-btn vibe-btn active" data-vibe="AI-Undetectable">AI-Undetectable</button>
-              <button class="pill-btn vibe-btn" data-vibe="Warm">Warm</button>
-              <button class="pill-btn vibe-btn" data-vibe="Casual">Casual</button>
-              <button class="pill-btn vibe-btn" data-vibe="Cheeky">Cheeky</button>
-              <button class="pill-btn vibe-btn" data-vibe="Authority">Authority</button>
-            </div>
-
-            <!-- Unfiltered toggle (with tooltip) -->
-            <div class="unfiltered-wrapper">
-              <label class="unfiltered-label">
-                <input type="checkbox" id="unfilteredToggle" />
-                Unfiltered 😈
-              </label>
-
-              <div class="tooltip">
-                Makes the rewrite bolder, looser, and more expressive.
-                Still safe — just lets the model be fun.
-              </div>
-            </div>
+            <label class="toggle-label">
+              <input type="checkbox" id="unfilteredToggle" />
+              Unfiltered 😈
+            </label>
           </div>
 
-          <!-- PERSONA ROW -->
-          <div class="control-group persona-group">
-            <span class="control-label">Voice:</span>
-
-            <div class="pill-row" id="personaRow">
-              <button class="pill-btn persona-btn active" data-persona="Default">Default</button>
-              <button class="pill-btn persona-btn" data-persona="Friendly founder">Friendly founder</button>
-              <button class="pill-btn persona-btn" data-persona="Dry professional">Dry professional</button>
-              <button class="pill-btn persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
-              <button class="pill-btn persona-btn" data-persona="Soft apology">Soft apology</button>
-            </div>
+          <div class="persona-row">
+            <span class="persona-label">Personas:</span>
+              <button type="button" class="persona-btn active" data-persona="Default">Default</button>
+              <button type="button" class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
+              <button type="button" class="persona-btn" data-persona="Dry professional">Dry professional</button>
+              <button type="button" class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
+              <button type="button" class="persona-btn" data-persona="Soft apology">Soft apology</button>
           </div>
+
+          <p class="persona-hint">
+            <strong>Tone = vibe.</strong> <strong>Persona = voice.</strong>
+            Combine both for the perfect rewrite.
+          </p>
 
           <button id="rewriteBtn" class="primary-btn">
             Make It Sound Human
           </button>
         </section>
 
-        <!-- OUTPUT -->
-        <section class="output-section" id="outputSection">
-          <pre id="outputText"></pre>
-        </section>
-
+        <section class="output-section" id="outputSection"></section>
       </section>
 
-      <!-- ======== BELOW-THE-FOLD CONTENT ======== -->
-
+      <!-- BELOW-THE-FOLD INFO / LANDING CONTENT -->
       <section class="info-section">
         <h3>What WarmDM actually does</h3>
         <p>
-          WarmDM is a focused AI message rewriter. You paste a DM, email,
+          WarmDM is a small, focused AI message rewriter. You paste a DM, email,
           LinkedIn message, sales opener, or “uh… not my best work” text,
-          and it rewrites it so it sounds human — not like a robot with a corporate haircut.
+          and it rewrites it so it sounds human — not like a robot trying to sell
+          you crypto in 2018.
         </p>
         <p>
-          Instead of fixing grammar, WarmDM fixes <em>tone</em>.
-          Warm, casual, cheeky, neutral, confident — you pick the vibe and voice,
-          it rewrites your message.
+          Instead of obsessing over grammar, WarmDM focuses on tone:
+          how your message <em>feels</em> when someone reads it. Warm, casual,
+          cheeky, more authoritative — you pick the vibe, it rewrites the message.
         </p>
 
         <div class="feature-grid">
           <div class="feature-card">
             <h4>AI message rewriter</h4>
             <p>
-              Paste anything and get a natural-sounding version back in seconds.
+              Paste anything and get a human-sounding version back in seconds.
             </p>
           </div>
 
           <div class="feature-card">
-            <h4>Your tone, your way</h4>
+            <h4>Tone that actually fits</h4>
             <p>
-              Warm, Casual, Authority, Cheeky, or AI-Undetectable — pick the mood.
+              Switch between Warm, Casual, Authority, Cheeky, or AI-Undetectable.
             </p>
           </div>
 
           <div class="feature-card">
-            <h4>For real conversations</h4>
+            <h4>Built for real conversations</h4>
             <p>
-              Use it for DMs, intros, sales outreach, dating apps, apologies,
-              or “I don’t know how to say this” moments.
+              Use it for Twitter/X DMs, sales outreach, dating apps, intros,
+              support messages — anywhere sounding human matters more than sounding
+              “perfect”.
             </p>
           </div>
         </div>
@@ -137,10 +123,10 @@
       <section class="info-section">
         <h3>Who WarmDM is for</h3>
         <ul class="bullet-list">
-          <li><strong>Founders</strong> who hate writing cold outreach.</li>
-          <li><strong>Creators & marketers</strong> looking for higher reply rates.</li>
-          <li><strong>Operators & PMs</strong> sending high-stakes messages.</li>
-          <li><strong>Anyone</strong> who wants their message to land better.</li>
+          <li><strong>Founders & indie hackers</strong> who hate writing cold outreach.</li>
+          <li><strong>Creators & marketers</strong> who want higher reply rates.</li>
+          <li><strong>Operators & PMs</strong> sending “one shot” messages.</li>
+          <li><strong>Anyone</strong> who reads their message and thinks: “Nope, that’s not it.”</li>
         </ul>
       </section>
 
@@ -148,9 +134,9 @@
         <h3>How it works (in 20 seconds)</h3>
         <ol class="inline-steps">
           <li><span>1</span> Paste your message.</li>
-          <li><span>2</span> Pick Vibe + Voice.</li>
+          <li><span>2</span> Pick a tone + persona.</li>
           <li><span>3</span> Click “Make It Sound Human”.</li>
-          <li><span>4</span> Copy the version that lands.</li>
+          <li><span>4</span> Copy the version that works.</li>
         </ol>
       </section>
 
@@ -158,63 +144,32 @@
         <h3>WarmDM as an AI message rewriter</h3>
         <p>
           WarmDM keeps your meaning but rewrites your delivery so it sounds
-          like a real human wrote it — smoother, softer, clearer, or more confident.
+          like a real human wrote it — softer, smoother, funnier, or more confident.
         </p>
       </section>
-
-      <!-- ======== RESTORED SEO-FOCUSED FAQ (Version B) ======== -->
 
       <section class="info-section faq-section">
         <h3>FAQ</h3>
 
         <div class="faq-item">
           <h4>Is WarmDM the same as Grammarly?</h4>
-          <p>No. Grammarly fixes correctness. WarmDM fixes tone and human-feel.</p>
+          <p>No. Grammarly focuses on correctness. WarmDM focuses on tone.</p>
         </div>
 
         <div class="faq-item">
           <h4>Does WarmDM store my messages?</h4>
-          <p>No. Messages are processed but not stored or used for training.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Can WarmDM rewrite LinkedIn, Twitter/X, cold outreach or DMs?</h4>
           <p>
-            Yes. WarmDM is built specifically for messages where tone matters:
-            outreach, intros, updates, apologies, and “help me say this better” moments.
+            Messages are processed but not stored for product training.
           </p>
         </div>
 
         <div class="faq-item">
-          <h4>What does AI-Undetectable mean?</h4>
+          <h4>Will there be paid plans?</h4>
           <p>
-            It rewrites your message with a natural, human rhythm —
-            varied sentence lengths, small imperfections, and soft cues
-            that remove the “AI wrote this” vibe.
+            Yes — once traction proves what people need.
           </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>What is Unfiltered Mode?</h4>
-          <p>
-            It lets the model be bolder, more expressive, and more direct.
-            Still safe — just less restrained.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Can WarmDM fix grammar?</h4>
-          <p>
-            It improves grammar as a side effect, but tone rewriting is the priority.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Is WarmDM free?</h4>
-          <p>Yes. Future paid plans may unlock extra features.</p>
         </div>
       </section>
-
     </main>
 
     <footer class="footer">

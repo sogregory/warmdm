@@ -181,16 +181,19 @@ background: #6366f1; /* purple to match brand */
    BUTTON
 ------------------------------ */
 .primary-btn {
-  width: 100%;
-  padding: 12px;
+  width: auto;
+  min-width: 240px;
+  padding: 12px 28px;
+  display: block;
+  margin: 20px auto 0;
   background: #6366f1;
   color: #fff;
+  font-size: 15px;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
-  transition: 0.15s;
+  transition: background .15s ease;
 }
 
 .primary-btn:hover {
@@ -412,4 +415,27 @@ background: #6366f1; /* purple to match brand */
   border-radius: 50%;
   cursor: pointer;
   font-size: 11px;
+}
+
+.output-section {
+  white-space: pre-wrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.output-section pre {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.tone-row {
+  margin-bottom: 16px;
+}
+
+.persona-header {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
 }

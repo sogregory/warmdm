@@ -1,441 +1,166 @@
-/* ------------------------------
-   BASE RESET
------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
+/* BASIC PAGE LAYOUT ----------------------------------------------------- */
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  background: #f8f9fc;
+  background: #f7f7fb;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
   color: #222;
-  line-height: 1.6;
 }
 
-/* ------------------------------
-   SHELL + LAYOUT
------------------------------- */
 .page-shell {
-  max-width: 880px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* ------------------------------
-   HEADER
------------------------------- */
+/* HEADER -------------------------------------------------------------- */
 .logo {
-  font-size: 22px;
-  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 22px;
 }
 
 .logo-icon {
-  background: #6366f1;
-  color: #fff;
+  background: #4c6ef5;
+  color: white;
   padding: 4px 8px;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 5px;
   font-size: 14px;
 }
 
 .title {
+  margin-top: 10px;
   font-size: 26px;
   font-weight: 700;
-  margin-top: 8px;
 }
 
 .subtitle {
-  margin-top: 6px;
-  color: #666;
+  margin-top: 5px;
   font-size: 15px;
+  color: #666;
 }
 
-/* ------------------------------
-   APP BOX
------------------------------- */
-.app-container {
-  background: #ffffff;
-  padding: 26px;
-  border-radius: 12px;
-  box-shadow: 0 2px 14px rgba(0,0,0,0.07);
-  margin-top: 24px;
-}
-
+/* INPUT AREA ----------------------------------------------------------- */
 textarea {
   width: 100%;
-  min-height: 120px;
+  height: 140px;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  padding: 14px;
-  font-size: 15px;
   resize: vertical;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-/* ------------------------------
-   TONE ROW
------------------------------- */
-.tone-header {
-  margin-top: 18px;
-  font-weight: 600;
-  font-size: 15px;
+.section-label {
   margin-bottom: 8px;
-}
-
-.tone-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.tone-btn {
-  padding: 6px 14px;
-  font-size: 14px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.15s;
-}
-
-.tone-btn.active {
-  background: #6366f1;
-  color: #fff;
-  border-color: #6366f1;
-}
-
-.tone-btn:hover {
-  background: #ececff;
-}
-
-/* ------------------------------
-   PERSONAS
------------------------------- */
-.persona-row {
-  margin: 12px 0 6px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.persona-label {
-  font-size: 14px;
   font-weight: 600;
-  margin-right: 4px;
 }
 
+/* BUTTON ROW ----------------------------------------------------------- */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tone-btn,
 .persona-btn {
   padding: 6px 12px;
-  border-radius: 18px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: white;
   cursor: pointer;
-  transition: 0.15s;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-background: #6366f1; /* purple to match brand */
-
-.persona-btn:hover {
-  background: #e9fff4;
+.tone-btn.active,
+.persona-btn.active {
+  background: #4c6ef5;
+  color: white;
+  border-color: #4c6ef5;
 }
 
-.controls-row,
-.persona-row {
-  margin-bottom: 12px;
-}
-
-
-/* ------------------------------
-   UNFILTERED TOGGLE
------------------------------- */
+/* UNFILTERED TOGGLE ---------------------------------------------------- */
 .toggle-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin: 15px 0;
   font-size: 14px;
-  cursor: pointer;
 }
 
-/* ------------------------------
-   HELP TEXT
------------------------------- */
-.tone-tip {
-  font-size: 13px;
-  color: #666;
-  margin-top: 6px;
-  margin-bottom: 16px;
+.tooltip {
+  cursor: help;
+  font-weight: bold;
 }
 
-/* ------------------------------
-   BUTTON
------------------------------- */
+/* SUBMIT BUTTON ------------------------------------------------------- */
 .primary-btn {
-  width: auto;
-  min-width: 240px;
-  padding: 12px 28px;
   display: block;
-  margin: 20px auto 0;
-  background: #6366f1;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
+  margin: 20px auto;
+  background: #4c6ef5;
+  color: white;
+  padding: 12px 22px;
   border-radius: 8px;
+  border: none;
+  font-size: 16px;
   cursor: pointer;
-  transition: background .15s ease;
 }
 
 .primary-btn:hover {
-  background: #4f52d8;
+  background: #3b5ae0;
 }
 
-/* ------------------------------
-   OUTPUT
------------------------------- */
+/* OUTPUT BOX ----------------------------------------------------------- */
 .output-section {
-  margin-top: 28px;
-  white-space: pre-wrap;
-  padding: 16px;
+  background: white;
+  padding: 20px;
   border-radius: 8px;
-  background: #fafafa;
-  border: 1px solid #e2e2e2;
-  font-family: "Menlo", "Consolas", monospace;
-  font-size: 14px;
-  overflow-x: auto;
-  max-height: 600px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-top: 20px;
 }
 
-/* ------------------------------
-   LANDING CONTENT
------------------------------- */
+.output-section pre {
+  overflow-x: hidden;
+  white-space: pre-wrap;
+}
+
+/* CONTENT SECTIONS ----------------------------------------------------- */
 .info-section {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-.info-section h3 {
-  font-size: 20px;
-  margin-bottom: 14px;
-}
-
-.info-section p,
-.info-section li {
-  font-size: 15px;
-  color: #444;
-}
-
-.bullet-list {
-  list-style: disc;
-  padding-left: 22px;
-}
-
-.inline-steps {
-  display: flex;
-  gap: 18px;
-  padding-left: 0;
-  list-style: none;
-}
-
-.inline-steps span {
-  background: #6366f1;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  margin-right: 6px;
-}
-
-/* ------------------------------
-   FEATURE GRID
------------------------------- */
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 16px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: 20px;
 }
 
 .feature-card {
-  background: #ffffff;
-  padding: 16px;
+  flex: 1;
+  min-width: 220px;
+  background: white;
+  padding: 18px;
   border-radius: 8px;
-  border: 1px solid #eee;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.04);
+  border: 1px solid #ddd;
 }
 
-.feature-card h4 {
-  margin-bottom: 6px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-/* ------------------------------
-   FAQ
------------------------------- */
-.faq-section .faq-item {
-  margin-bottom: 22px;
-}
-
-.faq-section h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-/* ------------------------------
-   FOOTER
------------------------------- */
+/* FOOTER --------------------------------------------------------------- */
 .footer {
   margin-top: 60px;
-  padding-top: 20px;
-  font-size: 14px;
-  color: #777;
   text-align: center;
-}
-
-.footer-sub a {
-  color: #6366f1;
-  text-decoration: none;
-}
-
-.footer-sub a:hover {
-  text-decoration: underline;
-}
-
-/* ------------------------------
-   LEGAL PAGES
------------------------------- */
-.page-shell {
-  max-width: 780px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.legal-page {
-  background: #f8f9fc;
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-}
-
-.info-section p,
-.info-section h3 {
-  max-width: 680px;
-}
-
-.footer a {
-  color: #6366f1;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.tooltip {
-  display: inline-block;
-  background: #6366f1;
-  color: white;
-  padding: 0 6px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 11px;
-  margin-left: 6px;
-}
-
-/* --- Toggle Switch --- */
-.toggle-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.toggle-label {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 24px;
-}
-
-.toggle-input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-slider {
-  position: absolute;
-  inset: 0;
-  background-color: #ccc;
-  border-radius: 24px;
-  transition: 0.3s;
-}
-
-.toggle-slider:before {
-  content: "";
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  top: 3px;
-  background-color: white;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-/* When checked */
-.toggle-input:checked + .toggle-slider {
-  background-color: #6366f1;
-}
-
-.toggle-input:checked + .toggle-slider:before {
-  transform: translateX(22px);
-}
-
-.toggle-text {
   font-size: 14px;
-  color: #4f4f4f;
+  color: #666;
 }
-
-/* Tooltip reused */
-.tooltip {
-  display: inline-block;
-  background: #6366f1;
-  color: white;
-  padding: 0 6px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 11px;
-}
-
-.output-section {
-  white-space: pre-wrap;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 600px;
-}
-
-.output-section pre {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.tone-row {
-  margin-bottom: 16px;
-}
-
-.persona-header {
-  margin-top: 12px;
-  margin-bottom: 6px;
-  font-weight: 600;
+.footer-sub a {
+  color: #4c6ef5;
+  text-decoration: none;
 }

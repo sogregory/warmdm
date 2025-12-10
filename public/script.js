@@ -1,57 +1,39 @@
 //
-// WarmDM — Frontend Logic
+// WarmDM Frontend Logic
 //
 
-// ------------------------------
-// STATE
-// ------------------------------
-let selectedTone = "Warm";          // default tone
-let selectedPersona = "Default";    // default persona
+let selectedTone = "AI-Undetectable";
+let selectedPersona = "Default";
 
-
-// ------------------------------
-// TONE BUTTON HANDLING
-// ------------------------------
-const toneButtons = document.querySelectorAll(".tone-btn");
-
-toneButtons.forEach((btn) => {
+// TONE BUTTONS
+document.querySelectorAll(".tone-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    toneButtons.forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".tone-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     selectedTone = btn.dataset.tone;
   });
 });
 
-
-// ------------------------------
-// PERSONA BUTTON HANDLING
-// ------------------------------
-const personaButtons = document.querySelectorAll(".persona-btn");
-
-personaButtons.forEach((btn) => {
+// PERSONA BUTTONS
+document.querySelectorAll(".persona-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    personaButtons.forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".persona-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     selectedPersona = btn.dataset.persona;
   });
 });
 
-
-// ------------------------------
-// MAIN REWRITE ACTION
-// ------------------------------
+// MAIN ACTION
 document.getElementById("rewriteBtn").addEventListener("click", async () => {
   const msg = document.getElementById("inputMessage").value.trim();
-  const mode = document.getElementById("unfilteredToggle").checked
-    ? "unfiltered"
-    : "safe";
+  const mode = document.getElementById("unfilteredToggle").checked ? "unfiltered" : "safe";
+  const output = document.getElementById("outputSection");
 
   if (!msg) {
     alert("Paste a message first.");
     return;
   }
 
-  const output = document.getElementById("outputSection");
   output.innerHTML = "<p>Rewriting… please wait.</p>";
 
   try {
@@ -63,28 +45,16 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
         tone: selectedTone,
         persona: selectedPersona,
         mode
-      }),
+      })
     });
 
     const data = await response.json();
-
-    const text =
-      data?.choices?.[0]?.message?.content ||
-      "No response — try again.";
+    const text = data?.choices?.[0]?.message?.content || "No response.";
 
     output.innerHTML = `<pre>${text}</pre>`;
-  } catch (err) {
-    console.error(err);
-    output.innerHTML = "<p>Error — could not rewrite message.</p>";
   }
-});
-
-
-// ------------------------------
-// OPTIONAL: Press Cmd+Enter to rewrite
-// ------------------------------
-document.addEventListener("keydown", (e) => {
-  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-    document.getElementById("rewriteBtn").click();
+  catch (err) {
+    console.error(err);
+    output.innerHTML = "<p>Error — try again.</p>";
   }
 });

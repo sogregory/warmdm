@@ -302,3 +302,76 @@ body {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+/* --------------------------------------------------
+   HERO HEADER — Center aligned branding (Purple Brand)
+-------------------------------------------------- */
+
+.hero-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.logo-badge {
+  background: #6366f1;         /* PURPLE BRAND */
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.hero-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: #111;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* --------------------------------------------------
+   ACTIVE BUTTON STYLES — BRAND PURPLE
+-------------------------------------------------- */
+
+.tone-btn.active,
+.persona-btn.active {
+  background-color: #6366f1;   /* Purple */
+  color: #ffffff !important;
+  border-color: #6366f1;
+}
+
+/* Buttons hover effect (consistent brand feel) */
+.tone-btn:hover,
+.persona-btn:hover {
+  background-color: #eef0ff;
+  border-color: #6366f1;
+  color: #333;
+}
+
+/* When active, no hover override — stays purple */
+.tone-btn.active:hover,
+.persona-btn.active:hover {
+  background-color: #6366f1;
+  color: #fff;
+}

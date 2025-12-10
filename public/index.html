@@ -2,150 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta-name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>WarmDM – Rewrite any message so it sounds human</title>
 
   <meta name="description"
-        content="WarmDM rewrites any DM, email or message so it sounds human, natural and non-cringe. No AI vibes — just real tone.">
+        content="WarmDM rewrites any message to sound more human, natural and real. No AI stiffness, no cringe. Just tone that fits." />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="page-shell">
 
-    <!-- HEADER -->
-    <header class="header">
-      <h1 class="logo">
-        <span class="logo-icon">WM</span> WarmDM
-      </h1>
-      <h2 class="title">Rewrite any message so it sounds human.</h2>
-      <p class="subtitle">No cringe. No AI vibes. Just natural tone.</p>
-    </header>
+<div class="page-shell">
 
-    <!-- MAIN TOOL -->
-    <main>
-      <section class="app-container">
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="logo">
+      <span class="logo-icon">WM</span>
+      WarmDM
+    </h1>
 
-        <!-- Message box -->
-        <textarea id="inputMessage" placeholder="Paste your message — I won’t judge."></textarea>
+    <h2 class="title">Rewrite any message so it sounds human.</h2>
+    <p class="subtitle">No cringe. No AI stiffness. Just natural tone.</p>
+  </header>
 
-        <!-- Tone -->
+
+  <!-- TOOL -->
+  <main>
+    <section class="app-container" id="app">
+
+      <!-- INPUT -->
+      <section class="input-section">
+
+        <textarea
+          id="inputMessage"
+          placeholder="Paste your message — I won’t judge.">
+        </textarea>
+
+
+        <!-- TONE BUTTONS -->
         <div class="section-label">How should it sound?</div>
+
         <div class="button-row" id="toneRow">
-          <button class="tone-btn active" data-tone="AI-Undetectable">AI-Undetectable</button>
-          <button class="tone-btn" data-tone="Warm">Warm</button>
-          <button class="tone-btn" data-tone="Casual">Casual</button>
-          <button class="tone-btn" data-tone="Authority">Authority</button>
-          <button class="tone-btn" data-tone="Cheeky">Cheeky</button>
+          <button type="button" class="tone-btn active" data-tone="Warm">Warm</button>
+          <button type="button" class="tone-btn" data-tone="Casual">Casual</button>
+          <button type="button" class="tone-btn" data-tone="Authority">Authority</button>
+          <button type="button" class="tone-btn" data-tone="Cheeky">Cheeky</button>
+          <button type="button" class="tone-btn" data-tone="AI-Undetectable">AI-Undetectable</button>
         </div>
 
-        <!-- Persona -->
-        <div class="section-label">Choose a personality</div>
+
+        <!-- PERSONA BUTTONS -->
+        <div class="section-label">Who should say it?</div>
+
         <div class="button-row" id="personaRow">
-          <button class="persona-btn active" data-persona="Default">Default</button>
-          <button class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
-          <button class="persona-btn" data-persona="Dry professional">Dry professional</button>
-          <button class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
-          <button class="persona-btn" data-persona="Soft apology">Soft apology</button>
+          <button type="button" class="persona-btn active" data-persona="Default">Default</button>
+          <button type="button" class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
+          <button type="button" class="persona-btn" data-persona="Dry professional">Dry professional</button>
+          <button type="button" class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
+          <button type="button" class="persona-btn" data-persona="Soft apology">Soft apology</button>
         </div>
 
-        <!-- Unfiltered toggle -->
+
+        <!-- UNFILTERED TOGGLE -->
         <label class="toggle-label">
           <input type="checkbox" id="unfilteredToggle" />
-          Unfiltered 😈
-          <span class="tooltip" title="Removes guardrails and lets the rewrite get bold, chaotic, or spicy. Use responsibly.">?</span>
+          <span>Unfiltered Mode 😈</span>
+
+          <!-- Tooltip icon -->
+          <span class="tooltip-icon" data-tooltip="Lets the AI go a bit wild. Not always smart, sometimes funny.">ⓘ</span>
         </label>
 
-        <!-- Submit -->
-        <button id="rewriteBtn" class="primary-btn">Make It Sound Human</button>
 
-        <!-- Output -->
-        <section class="output-section" id="outputSection"></section>
+        <!-- SUBMIT -->
+        <button id="rewriteBtn" class="primary-btn">Make it sound human</button>
 
       </section>
 
-      <!-- LANDING CONTENT BELOW TOOL -->
-      <section class="info-section">
-        <h3>What WarmDM actually does</h3>
-        <p>
-          WarmDM rewrites your message so it feels human — not like a robot trying to sell you crypto in 2018.
-        </p>
 
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>AI message rewriter</h4>
-            <p>Paste anything and get a human-sounding rewrite in seconds.</p>
-          </div>
-          <div class="feature-card">
-            <h4>Tone that actually fits</h4>
-            <p>Switch between Warm, Casual, Authority, Cheeky, or AI-Undetectable.</p>
-          </div>
-          <div class="feature-card">
-            <h4>Built for real conversations</h4>
-            <p>Use it for DMs, intros, outreach, dating apps, support messages — anywhere sounding human matters.</p>
-          </div>
-        </div>
+      <!-- OUTPUT -->
+      <section class="output-section" id="outputSection">
+        <!-- AI output goes here -->
       </section>
 
-      <section class="info-section">
-        <h3>Who WarmDM is for</h3>
-        <ul class="bullet-list">
-          <li>Founders & indie hackers writing cold outreach.</li>
-          <li>Creators & marketers aiming for higher reply rates.</li>
-          <li>Operators & PMs sending “one shot” messages.</li>
-          <li>Anyone who reads their message and thinks: “Nope, not sending that.”</li>
-        </ul>
-      </section>
+    </section>
 
-      <section class="info-section">
-        <h3>How it works (in 20 seconds)</h3>
-        <ol class="inline-steps">
-          <li><span>1</span> Paste your message.</li>
-          <li><span>2</span> Pick a tone + personality.</li>
-          <li><span>3</span> Click “Make It Sound Human”.</li>
-          <li><span>4</span> Copy the rewrite and send.</li>
-        </ol>
-      </section>
 
-      <section class="info-section">
-        <h3>FAQ</h3>
 
-        <div class="faq-item">
-          <h4>Is WarmDM the same as Grammarly?</h4>
-          <p>No — Grammarly fixes correctness. WarmDM fixes tone.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Does WarmDM store my messages?</h4>
-          <p>No, they’re processed only to generate the rewrite.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Will there be paid plans later?</h4>
-          <p>Yes — once traction proves what people need.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>What messages does it work best on?</h4>
-          <p>DMs, intros, apologies, outreach, dating apps, soft pitches.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>WarmDM · Rewrite any message so it sounds human.</p>
-      <p class="footer-sub">
-        <a href="/privacy">Privacy Policy</a> ·
-        <a href="/terms">Terms</a> ·
-        <a href="/disclaimer">Disclaimer</a>
+    <!-- LANDING CONTENT -->
+    <section class="info-section">
+      <h3>What WarmDM does</h3>
+      <p>
+        WarmDM rewrites your message so it feels more natural and human. You choose how it should sound and who it should sound like. The rewrite keeps your meaning but improves the delivery.
       </p>
-    </footer>
+    </section>
 
-  </div>
 
-  <script src="script.js"></script>
+    <section class="info-section how-it-works">
+      <h3>How it works</h3>
+
+      <div class="feature-grid">
+
+        <div class="feature-card step-card">
+          <div class="step-number">1</div>
+          <p>Paste your message.</p>
+        </div>
+
+        <div class="feature-card step-card">
+          <div class="step-number">2</div>
+          <p>Pick how it should sound and who should say it.</p>
+        </div>
+
+        <div class="feature-card step-card">
+          <div class="step-number">3</div>
+          <p>Get a human-sounding rewrite you can actually send.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="info-section faq-section">
+      <h3>FAQ</h3>
+
+      <div class="faq-item">
+        <h4>Is WarmDM like Grammarly?</h4>
+        <p>
+          No. Grammarly fixes correctness. WarmDM fixes tone. It helps your message sound more human, warm or natural.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Does this work for all types of messages?</h4>
+        <p>
+          Yes — outreach, intros, follow-ups, apologies, casual notes, dating messages, all of it. If a human reads it, WarmDM helps.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Do you store my messages?</h4>
+        <p>
+          No. Messages are processed and gone. We don’t store, train on or sell anything.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Will WarmDM become a paid tool?</h4>
+        <p>
+          Probably later. For now the goal is traction and usefulness.
+        </p>
+      </div>
+    </section>
+
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>WarmDM · Rewrite any message so it sounds human</p>
+
+    <p class="footer-sub">
+      <a href="/privacy">Privacy Policy</a> ·
+      <a href="/terms">Terms</a> ·
+      <a href="/disclaimer">Disclaimer</a>
+    </p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -116,13 +116,15 @@ body {
 
 .tone-btn:hover,
 .persona-btn:hover {
-  background: #f0f0f0;
+  background-color: #f2efff;       /* soft purple tint */
+  border-color: #703fe0;
+  color: #333;
 }
 
 .tone-btn.active,
 .persona-btn.active {
-  background: #4a6cf7;
-  border-color: #4a6cf7;
+  background: #703fe0;             /* brand purple */
+  border-color: #703fe0;
   color: #fff;
 }
 
@@ -143,7 +145,7 @@ body {
 .tooltip-icon {
   font-size: 13px;
   cursor: help;
-  color: #777;
+  color: #703fe0;                  /* subtle brand accent */
 }
 
 
@@ -153,7 +155,7 @@ body {
 
 .primary-btn {
   width: 100%;
-  background: #4a6cf7;
+  background: #703fe0;             /* brand purple */
   color: #fff;
   padding: 14px;
   border-radius: 8px;
@@ -166,7 +168,7 @@ body {
 }
 
 .primary-btn:hover {
-  background: #3b55cc;
+  background: #5e33c0;             /* slightly darker on hover */
 }
 
 
@@ -257,7 +259,7 @@ body {
 
 .step-num {
   display: inline-block;
-  background: #4a6cf7;
+  background: #703fe0;             /* brand purple */
   color: #fff;
   padding: 6px 10px;
   border-radius: 50%;
@@ -296,12 +298,14 @@ body {
 }
 
 .footer-links a {
-  color: #4a6cf7;
+  color: #703fe0;                  /* brand purple links */
   text-decoration: none;
 }
+
 .footer-links a:hover {
   text-decoration: underline;
 }
+
 
 /* --------------------------------------------------
    HERO HEADER — Center aligned branding (Purple Brand)
@@ -321,7 +325,7 @@ body {
 }
 
 .logo-badge {
-  background: #6366f1;         /* PURPLE BRAND */
+  background: #703fe0;             /* brand purple */
   color: white;
   font-size: 12px;
   font-weight: 600;
@@ -350,28 +354,21 @@ body {
   margin-bottom: 20px;
 }
 
+
 /* --------------------------------------------------
-   ACTIVE BUTTON STYLES — BRAND PURPLE
+   ACTIVE BUTTON STYLES — BRAND PURPLE (override)
 -------------------------------------------------- */
 
 .tone-btn.active,
 .persona-btn.active {
-  background-color: #6366f1;   /* Purple */
+  background-color: #703fe0;       /* brand purple */
   color: #ffffff !important;
-  border-color: #6366f1;
+  border-color: #703fe0;
 }
 
-/* Buttons hover effect (consistent brand feel) */
-.tone-btn:hover,
-.persona-btn:hover {
-  background-color: #eef0ff;
-  border-color: #6366f1;
-  color: #333;
-}
-
-/* When active, no hover override — stays purple */
+/* When active, keep solid purple on hover */
 .tone-btn.active:hover,
 .persona-btn.active:hover {
-  background-color: #6366f1;
+  background-color: #703fe0;
   color: #fff;
 }

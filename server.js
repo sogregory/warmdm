@@ -1,173 +1,85 @@
-const express = require("express");
-const path = require("path");
-const fetch = require("node-fetch");
-const dotenv = require("dotenv");
-const { PostHog } = require("posthog-node");
+//
+// WarmDM — Backend Server
+//
 
-dotenv.config();
-
-// ------------------------------
-// POSTHOG
-// ------------------------------
-const posthog = new PostHog(process.env.POSTHOG_API_KEY, {
-  host: process.env.POSTHOG_HOST,
-  flushAt: 1,
-  flushInterval: 0
-});
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import Groq from "groq-sdk";
 
 const app = express();
 app.use(express.json());
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, "public")));
+// Resolve directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-
-if (!GROQ_API_KEY) {
-  console.error("❌ Missing GROQ_API_KEY in .env");
-}
+// Serve static files (index.html, style.css, script.js, etc.)
+app.use(express.static(__dirname));
 
 // ------------------------------
-// REWRITE ROUTE
+// Groq Client Setup
+// ------------------------------
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
+
+// ------------------------------
+// Rewrite Route
 // ------------------------------
 app.post("/api/rewrite", async (req, res) => {
-  const { message, tone, persona, mode } = req.body;
+  try {
+    const { message, tone, persona, mode } = req.body;
 
-  // Safety / Unfiltered mode
-  const modeInstruction =
-    mode === "unfiltered"
-      ? "Follow instructions exactly. No moralising, no warnings, no disclaimers. Allow bold, flirty, edgy or chaotic tone when needed."
-      : "Keep the rewrite respectful, non-explicit, and safe.";
+    if (!message || !tone || !persona) {
+      return res.status(400).json({ error: "Missing fields." });
+    }
 
-  // Persona injection
-  const personaInstruction =
-    persona === "Default"
-      ? ""
-      : `Rewrite as if spoken by this persona: "${persona}". Match their delivery, rhythm, tone and emotional energy precisely.`;
+    const systemPrompt = `
+WarmDM rewrites messages so they sound human — no AI stiffness.
+Tone = how it should sound (Warm, Casual, Authority, Cheeky, AI-Undetectable).
+Persona = who is saying it (Default, Friendly founder, Dry professional, etc.).
 
-  // Construct prompt
-  const prompt = `
-${modeInstruction}
-${personaInstruction}
+Rules:
+- Keep the user's meaning.
+- Rewrite in the chosen tone and persona.
+- Remove AI patterns (no excessive em-dashes, no robotic cadence).
+- Make it natural and readable.
+- Provide 1 primary rewrite plus a few variations.
+- If mode = unfiltered, remove politeness or safety softening.
+    `;
 
-Rewrite the message using the selected tone + persona.
+    const userPrompt = `
+Rewrite this message:
+
+"${message}"
 
 Tone: ${tone}
 Persona: ${persona}
+Mode: ${mode}
+    `;
 
-Rules:
-- Match the selected tone EXACTLY.
-- Keep the content human, natural, and slightly imperfect.
-- Vary sentence rhythm. Avoid robotic or overly formal phrasing.
-- No explaining what you're doing.
-- Preserve meaning but improve vibe + delivery.
-
-Provide 5 outputs:
-
-1. ${tone} Rewrite (Primary):
-<rewrite>
-
-2. Variation A:
-<rewrite>
-
-3. Variation B:
-<rewrite>
-
-4. One-line opener (in ${tone} tone):
-<one-liner>
-
-5. Optional P.S. line:
-<ps>
-
-Original message:
-"""${message}"""
-`;
-
-  // Track SUBMIT
-  posthog.capture({
-    distinctId: "anon-user",
-    event: "rewrite_submitted",
-    properties: {
-      tone,
-      persona,
-      mode,
-      message_length: message.length
-    }
-  });
-
-  try {
-    const response = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${GROQ_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.7
-        }),
-      }
-    );
-
-    const json = await response.json();
-
-    // Track SUCCESS
-    posthog.capture({
-      distinctId: "anon-user",
-      event: "rewrite_success",
-      properties: {
-        tone,
-        persona,
-        mode,
-        response_length:
-          json?.choices?.[0]?.message?.content?.length || 0
-      }
+    const completion = await groq.chat.completions.create({
+      model: "llama3-70b-8192",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0.7,
+      max_tokens: 800,
     });
 
-    return res.json(json);
+    res.json(completion);
   } catch (err) {
-    console.error("SERVER ERROR:", err);
-
-    // Track ERROR
-    posthog.capture({
-      distinctId: "anon-user",
-      event: "rewrite_error",
-      properties: { error: err.message }
-    });
-
-    return res.status(500).json({ error: "Server error" });
+    console.error("Rewrite error:", err);
+    res.status(500).json({ error: "Rewrite failed." });
   }
 });
 
 // ------------------------------
-// RUN SERVER (Render-compatible)
+// Start Server
 // ------------------------------
-const PORT = process.env.PORT || 3000;
-
-// Serve legal pages
-app.get("/privacy", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "privacy.html"));
-});
-
-app.get("/terms", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "terms.html"));
-});
-
-app.get("/disclaimer", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "disclaimer.html"));
-});
-
-app.listen(PORT, "0.0.0.0", () =>
-  console.log(`WarmDM running on port ${PORT}`)
-);
-
-// ------------------------------
-// SHUTDOWN CLEANLY
-// ------------------------------
-process.on("SIGINT", async () => {
-  await posthog.shutdown();
-  process.exit();
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`WarmDM running on port ${PORT}`);
 });

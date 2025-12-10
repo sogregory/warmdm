@@ -1,289 +1,304 @@
-/* ----------------------------------------------------
-   GLOBAL RESET
----------------------------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
+/* ----------------------------------------
+   Global Layout
+----------------------------------------- */
 
 body {
-  background: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Arial, sans-serif;
+  background: #f7f7f9;
   color: #111;
-  line-height: 1.55;
-  padding: 20px;
+  margin: 0;
+  padding: 0;
 }
 
-/* ----------------------------------------------------
-   PAGE CONTAINER
----------------------------------------------------- */
 .page-shell {
-  max-width: 880px; /* Medium width */
+  max-width: 880px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
 
-/* ----------------------------------------------------
-   HEADER
----------------------------------------------------- */
-.header {
-  text-align: center;
-  margin-bottom: 32px;
-}
+/* ----------------------------------------
+   Branding / Header
+----------------------------------------- */
 
-.logo {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  display: inline-flex;
+.brand-row {
+  display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.logo-icon {
-  background: #111;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.title {
-  font-size: 28px;
-  font-weight: 700;
+  gap: 10px;
   margin-bottom: 6px;
 }
 
+.brand-icon {
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title {
+  font-size: 26px;
+  margin: 8px 0 4px;
+  font-weight: 700;
+}
+
 .subtitle {
-  font-size: 16px;
-  color: #444;
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #555;
 }
 
 
-/* ----------------------------------------------------
-   INPUT SECTION
----------------------------------------------------- */
-.input-section {
+/* ----------------------------------------
+   Tool Card
+----------------------------------------- */
+
+.tool-card {
   background: #fff;
-  padding: 20px;
   border-radius: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 22px;
+  padding: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 32px;
 }
 
-textarea {
+#inputMessage {
   width: 100%;
-  min-height: 120px;
-  padding: 14px;
+  height: 150px;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
+  padding: 14px;
+  border: 1px solid #ddd;
   resize: vertical;
-  margin-bottom: 20px;
+  font-size: 15px;
+  font-family: inherit;
 }
 
-.section-label {
+.controls {
+  margin-top: 20px;
+}
+
+
+/* ----------------------------------------
+   Tone & Persona Rows
+----------------------------------------- */
+
+.control-label {
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
-  margin-top: 6px;
+  margin-bottom: 6px;
+  display: block;
 }
 
-
-/* ----------------------------------------------------
-   BUTTON ROWS
----------------------------------------------------- */
-.button-row {
+.tone-row,
+.persona-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .tone-btn,
 .persona-btn {
-  padding: 8px 14px;
-  border-radius: 6px;
   border: 1px solid #ccc;
-  background: #f7f7f7;
+  background: #fafafa;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   transition: 0.15s;
-}
-
-.tone-btn.active,
-.persona-btn.active {
-  background: #111;
-  color: #fff;
-  border-color: #111;
 }
 
 .tone-btn:hover,
 .persona-btn:hover {
-  background: #e8e8e8;
+  background: #f0f0f0;
 }
 
-
-/* ----------------------------------------------------
-   UNFILTERED TOGGLE
----------------------------------------------------- */
-.toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 8px 0 18px;
-  font-size: 14px;
-}
-
-.toggle-label input[type="checkbox"] {
-  transform: scale(1.2);
-}
-
-/* Tooltip */
-.tooltip-icon {
-  cursor: pointer;
-  background: #ddd;
-  padding: 2px 6px;
-  border-radius: 50%;
-  font-size: 11px;
-  color: #333;
-  position: relative;
-}
-
-.tooltip-icon:hover::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  left: 50%;
-  top: 115%;
-  transform: translateX(-50%);
-  background: #111;
+.tone-btn.active,
+.persona-btn.active {
+  background: #4a6cf7;
+  border-color: #4a6cf7;
   color: #fff;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 6px;
-  white-space: nowrap;
-  z-index: 10;
 }
 
 
-/* ----------------------------------------------------
-   REWRITE BUTTON
----------------------------------------------------- */
+/* ----------------------------------------
+   Unfiltered Toggle + Tooltip
+----------------------------------------- */
+
+.unf-row {
+  margin-bottom: 18px;
+}
+
+.unf-label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.tooltip-icon {
+  font-size: 13px;
+  cursor: help;
+  color: #777;
+}
+
+
+/* ----------------------------------------
+   Primary Button
+----------------------------------------- */
+
 .primary-btn {
   width: 100%;
-  background: #111;
+  background: #4a6cf7;
   color: #fff;
   padding: 14px;
-  font-size: 16px;
-  border: none;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-  margin-top: 8px;
-  transition: background 0.2s;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  margin-top: 10px;
 }
 
 .primary-btn:hover {
-  background: #333;
+  background: #3b55cc;
 }
 
 
-/* ----------------------------------------------------
-   OUTPUT SECTION
----------------------------------------------------- */
+/* ----------------------------------------
+   Output Section
+----------------------------------------- */
+
 .output-section {
-  background: #fff;
+  background: #fafafa;
   border: 1px solid #ddd;
-  padding: 20px;
-  margin-top: 18px;
-  border-radius: 10px;
-  white-space: pre-wrap;   /* Wrap long lines */
-  overflow-x: hidden;      /* Prevent sideways scroll */
+  padding: 18px;
+  border-radius: 8px;
+  min-height: 60px;
+  margin-top: 24px;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  max-height: 380px; /* prevents overflow downwards */
 }
 
+/* Prevent sideways scroll bug */
 .output-section pre {
   white-space: pre-wrap;
-  font-size: 15px;
+  word-wrap: break-word;
 }
 
 
-/* ----------------------------------------------------
-   INFO SECTIONS
----------------------------------------------------- */
+/* ----------------------------------------
+   Info Sections / SEO Blocks
+----------------------------------------- */
+
 .info-section {
-  margin: 36px 0;
+  margin-top: 50px;
 }
 
 .info-section h3 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .info-section p {
-  margin-bottom: 12px;
-  color: #333;
+  color: #444;
+  line-height: 1.55;
+  margin-bottom: 18px;
 }
 
 
-/* ----------------------------------------------------
-   HOW IT WORKS (3 STEPS)
----------------------------------------------------- */
+/* Feature Boxes */
 .feature-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
 }
 
 .feature-card {
-  flex: 1;
-  min-width: 180px;
   background: #fff;
-  border: 1px solid #ddd;
-  padding: 18px;
   border-radius: 10px;
+  padding: 18px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.feature-card h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+
+/* ----------------------------------------
+   How It Works – Step Cards
+----------------------------------------- */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
 }
 
 .step-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
-.step-number {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #111;
+.step-num {
+  display: inline-block;
+  background: #4a6cf7;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 50%;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
 
-/* ----------------------------------------------------
+/* ----------------------------------------
    FAQ
----------------------------------------------------- */
+----------------------------------------- */
+
 .faq-section .faq-item {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
-.faq-item h4 {
-  font-size: 17px;
+.faq-section h4 {
   margin-bottom: 6px;
 }
 
-
-/* ----------------------------------------------------
-   FOOTER
----------------------------------------------------- */
-.footer {
-  margin-top: 40px;
-  text-align: center;
-  padding: 20px 0;
-  color: #555;
-  font-size: 14px;
+.faq-section p {
+  margin: 0;
+  color: #444;
 }
 
-.footer a {
-  color: #111;
+
+/* ----------------------------------------
+   Footer
+----------------------------------------- */
+
+.footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+}
+
+.footer-links a {
+  color: #4a6cf7;
   text-decoration: none;
 }
-
-.footer a:hover {
+.footer-links a:hover {
   text-decoration: underline;
 }

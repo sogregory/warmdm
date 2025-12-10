@@ -3,14 +3,14 @@
 //
 
 // ----------------------------------------------------
-// STATE
+// State
 // ----------------------------------------------------
-let selectedTone = "Warm";          // default tone
-let selectedPersona = "Default";    // default persona
+let selectedTone = "Warm";           // Default tone
+let selectedPersona = "Default";     // Default persona
 
 
 // ----------------------------------------------------
-// TONE BUTTON HANDLING
+// Tone Button Handling
 // ----------------------------------------------------
 const toneButtons = document.querySelectorAll(".tone-btn");
 
@@ -24,7 +24,7 @@ toneButtons.forEach((btn) => {
 
 
 // ----------------------------------------------------
-// PERSONA BUTTON HANDLING
+// Persona Button Handling
 // ----------------------------------------------------
 const personaButtons = document.querySelectorAll(".persona-btn");
 
@@ -38,7 +38,20 @@ personaButtons.forEach((btn) => {
 
 
 // ----------------------------------------------------
-// MAIN REWRITE ACTION
+// Tooltip Handling (small, simple)
+// ----------------------------------------------------
+const tooltipIcon = document.getElementById("unfilteredTooltip");
+if (tooltipIcon) {
+  tooltipIcon.addEventListener("mouseenter", () => {
+    tooltipIcon.setAttribute("title",
+      "Removes filters and guardrails. Use only if you want a version without safety softening."
+    );
+  });
+}
+
+
+// ----------------------------------------------------
+// Main Rewrite
 // ----------------------------------------------------
 document.getElementById("rewriteBtn").addEventListener("click", async () => {
   const msg = document.getElementById("inputMessage").value.trim();
@@ -46,7 +59,6 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
     ? "unfiltered"
     : "safe";
 
-  // No empty messages
   if (!msg) {
     alert("Paste a message first.");
     return;
@@ -75,18 +87,17 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
 
     output.innerHTML = `<pre>${text}</pre>`;
   } catch (err) {
-    console.error("Rewrite error:", err);
+    console.error(err);
     output.innerHTML = "<p>Error — could not rewrite message.</p>";
   }
 });
 
 
 // ----------------------------------------------------
-// OPTIONAL: Cmd+Enter to rewrite
+// Cmd+Enter / Ctrl+Enter Shortcut
 // ----------------------------------------------------
 document.addEventListener("keydown", (e) => {
-  const rewriteBtn = document.getElementById("rewriteBtn");
   if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-    rewriteBtn.click();
+    document.getElementById("rewriteBtn").click();
   }
 });

@@ -47,11 +47,13 @@
           <div class="tone-header">How should it sound?</div>
 
           <div class="tone-row">
-            <button class="tone-btn active" data-tone="Warm">Warm</button>
-            <button class="tone-btn" data-tone="Casual">Casual</button>
-            <button class="tone-btn" data-tone="Authority">Authority</button>
-            <button class="tone-btn" data-tone="Cheeky">Cheeky</button>
-            <button class="tone-btn" data-tone="AI-Undetectable">AI-Undetectable</button>
+              <span class="tone-label">How should it sound?</span>
+
+              <button class="tone-btn active" data-tone="AI-Undetectable">AI-Undetectable</button>
+              <button class="tone-btn" data-tone="Warm">Warm</button>
+              <button class="tone-btn" data-tone="Casual">Casual</button>
+              <button class="tone-btn" data-tone="Authority">Authority</button>
+              <button class="tone-btn" data-tone="Cheeky">Cheeky</button>
           </div>
 
           <!-- Personas -->
@@ -64,10 +66,14 @@
               <button type="button" class="persona-btn" data-persona="Soft apology">Soft apology</button>
           </div>
 
-          <label class="toggle-label">
-            <input type="checkbox" id="unfilteredToggle" />
-            Unfiltered 😈
-          </label>
+          <div class="toggle-wrapper">
+            <label class="toggle-label">
+              <input type="checkbox" id="unfilteredToggle" class="toggle-input" />
+              <span class="toggle-slider"></span>
+            </label>
+              <span class="toggle-text">Unfiltered Mode 😈</span>
+              <span class="tooltip" title="Unfiltered removes guardrails and rewrites exactly as instructed. Use responsibly.">?</span>
+          </div>
 
           <div class="tone-tip">
             Tone = vibe. Persona = voice. Combine both for the perfect rewrite.

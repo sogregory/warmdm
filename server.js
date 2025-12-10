@@ -147,6 +147,19 @@ Original message:
 // ------------------------------
 const PORT = process.env.PORT || 3000;
 
+// Serve legal pages
+app.get("/privacy", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "privacy.html"));
+});
+
+app.get("/terms", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "terms.html"));
+});
+
+app.get("/disclaimer", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "disclaimer.html"));
+});
+
 app.listen(PORT, "0.0.0.0", () =>
   console.log(`WarmDM running on port ${PORT}`)
 );

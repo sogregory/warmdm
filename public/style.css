@@ -80,6 +80,14 @@ body {
   box-sizing: border-box !important; /* <-- forced fix */
 }
 
+/* Subtle focus styling for textarea */
+#inputMessage:focus {
+  outline: none;
+  border-color: #703fe0;
+  box-shadow: 0 0 0 2px rgba(112, 63, 224, 0.12);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
 .controls {
   margin-top: 20px;
 }

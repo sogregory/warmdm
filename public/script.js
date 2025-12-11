@@ -1,13 +1,12 @@
 //
-// WarmDM — Frontend Logic (Updated with Auto-Scroll)
+// WarmDM — Frontend Logic (Updated with Auto-Scroll + Loader Dots)
 //
 
 // ----------------------------------------------------
 // State
 // ----------------------------------------------------
-let selectedTone = "Warm";           // Default tone
-let selectedPersona = "Default";     // Default persona
-
+let selectedTone = "Warm";
+let selectedPersona = "Default";
 
 
 // ----------------------------------------------------
@@ -24,7 +23,6 @@ toneButtons.forEach((btn) => {
 });
 
 
-
 // ----------------------------------------------------
 // Persona Button Handling
 // ----------------------------------------------------
@@ -39,9 +37,8 @@ personaButtons.forEach((btn) => {
 });
 
 
-
 // ----------------------------------------------------
-// Tooltip Handling (simple)
+// Tooltip Handling
 // ----------------------------------------------------
 const tooltipIcon = document.getElementById("unfilteredTooltip");
 if (tooltipIcon) {
@@ -54,9 +51,8 @@ if (tooltipIcon) {
 }
 
 
-
 // ----------------------------------------------------
-// Auto-Scroll to Output (NEW)
+// Auto-Scroll to Output
 // ----------------------------------------------------
 function scrollToOutput() {
   const outputSection = document.getElementById("outputSection");
@@ -67,7 +63,6 @@ function scrollToOutput() {
     block: "start"
   });
 }
-
 
 
 // ----------------------------------------------------
@@ -85,7 +80,7 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
   }
 
   const output = document.getElementById("outputSection");
-  output.innerHTML = "<p>Rewriting… please wait.</p>";
+  output.innerHTML = '<p class="loader-dots">Rewriting</p>';
 
   try {
     const response = await fetch("/api/rewrite", {
@@ -106,8 +101,6 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
       "No response — try again.";
 
     output.innerHTML = `<pre>${text}</pre>`;
-
-    // 🔥 NEW: Automatically scroll so the user sees the result
     scrollToOutput();
 
   } catch (err) {
@@ -115,7 +108,6 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
     output.innerHTML = "<p>Error — could not rewrite message.</p>";
   }
 });
-
 
 
 // ----------------------------------------------------

@@ -1,5 +1,5 @@
 //
-// WarmDM — Frontend Logic
+// WarmDM — Frontend Logic (Updated with Auto-Scroll)
 //
 
 // ----------------------------------------------------
@@ -7,6 +7,7 @@
 // ----------------------------------------------------
 let selectedTone = "Warm";           // Default tone
 let selectedPersona = "Default";     // Default persona
+
 
 
 // ----------------------------------------------------
@@ -23,6 +24,7 @@ toneButtons.forEach((btn) => {
 });
 
 
+
 // ----------------------------------------------------
 // Persona Button Handling
 // ----------------------------------------------------
@@ -37,17 +39,35 @@ personaButtons.forEach((btn) => {
 });
 
 
+
 // ----------------------------------------------------
-// Tooltip Handling (small, simple)
+// Tooltip Handling (simple)
 // ----------------------------------------------------
 const tooltipIcon = document.getElementById("unfilteredTooltip");
 if (tooltipIcon) {
   tooltipIcon.addEventListener("mouseenter", () => {
-    tooltipIcon.setAttribute("title",
+    tooltipIcon.setAttribute(
+      "title",
       "Removes filters and guardrails. Use only if you want a version without safety softening."
     );
   });
 }
+
+
+
+// ----------------------------------------------------
+// Auto-Scroll to Output (NEW)
+// ----------------------------------------------------
+function scrollToOutput() {
+  const outputSection = document.getElementById("outputSection");
+  if (!outputSection) return;
+
+  outputSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
 
 
 // ----------------------------------------------------
@@ -76,7 +96,7 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
         tone: selectedTone,
         persona: selectedPersona,
         mode
-      }),
+      })
     });
 
     const data = await response.json();
@@ -86,11 +106,16 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
       "No response — try again.";
 
     output.innerHTML = `<pre>${text}</pre>`;
+
+    // 🔥 NEW: Automatically scroll so the user sees the result
+    scrollToOutput();
+
   } catch (err) {
     console.error(err);
     output.innerHTML = "<p>Error — could not rewrite message.</p>";
   }
 });
+
 
 
 // ----------------------------------------------------

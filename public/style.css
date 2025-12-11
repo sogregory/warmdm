@@ -70,7 +70,7 @@ body {
 
 #inputMessage {
   width: 100%;
-  height: 200px; /* increased from 150 */
+  height: 200px; /* was 150px – slightly taller now */
   border-radius: 8px;
   padding: 14px;
   border: 1px solid #ddd;
@@ -111,26 +111,20 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
-  transition: 0.15s ease;
+  transition: 0.15s;
 }
 
 .tone-btn:hover,
 .persona-btn:hover {
-  background-color: #f5f0ff;
+  background-color: #f2efff;       /* soft purple tint */
   border-color: #703fe0;
   color: #333;
 }
 
 .tone-btn.active,
 .persona-btn.active {
-  background-color: #703fe0;
-  color: #ffffff !important;
+  background: #703fe0;             /* brand purple */
   border-color: #703fe0;
-}
-
-.tone-btn.active:hover,
-.persona-btn.active:hover {
-  background-color: #703fe0;
   color: #fff;
 }
 
@@ -151,7 +145,7 @@ body {
 .tooltip-icon {
   font-size: 13px;
   cursor: help;
-  color: #703fe0;
+  color: #703fe0;                  /* subtle brand accent */
 }
 
 
@@ -161,7 +155,7 @@ body {
 
 .primary-btn {
   width: 100%;
-  background: #703fe0;
+  background: #703fe0;             /* brand purple */
   color: #fff;
   padding: 14px;
   border-radius: 8px;
@@ -169,12 +163,12 @@ body {
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  transition: background 0.2s ease, box-shadow 0.15s ease, transform 0.1s ease;
   margin-top: 10px;
+  transition: background 0.2s ease, box-shadow 0.15s ease, transform 0.1s ease;
 }
 
 .primary-btn:hover {
-  background: #5e33c0;
+  background: #5e33c0;             /* slightly darker on hover */
   box-shadow: 0 4px 10px rgba(112, 63, 224, 0.25);
   transform: translateY(-1px);
 }
@@ -193,13 +187,14 @@ body {
   margin-top: 24px;
   white-space: pre-wrap;
   overflow-y: auto;
-  max-height: 380px;
+  max-height: 380px; /* prevents overflow downwards */
 }
 
+/* Prevent sideways scroll bug */
 .output-section pre {
   white-space: pre-wrap;
   word-wrap: break-word;
-  margin-bottom: 18px; /* added spacing */
+  margin-bottom: 18px;      /* extra breathing room */
   line-height: 1.45;
 }
 
@@ -242,6 +237,8 @@ body {
   margin-bottom: 18px;
 }
 
+
+/* Feature Boxes */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -264,6 +261,55 @@ body {
 
 
 /* ----------------------------------------
+   How It Works – Step Cards
+----------------------------------------- */
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.step-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.step-num {
+  display: inline-block;
+  background: #703fe0;             /* brand purple */
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 50%;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+
+/* ----------------------------------------
+   FAQ
+----------------------------------------- */
+
+.faq-section .faq-item {
+  margin-bottom: 22px;
+}
+
+.faq-section h4 {
+  margin-bottom: 6px;
+}
+
+.faq-section p {
+  margin: 0;
+  color: #444;
+}
+
+
+/* ----------------------------------------
    Footer
 ----------------------------------------- */
 
@@ -275,10 +321,77 @@ body {
 }
 
 .footer-links a {
-  color: #703fe0;
+  color: #703fe0;                  /* brand purple links */
   text-decoration: none;
 }
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+
+/* --------------------------------------------------
+   HERO HEADER — Center aligned branding (Purple Brand)
+-------------------------------------------------- */
+
+.hero-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.logo-badge {
+  background: #703fe0;             /* brand purple */
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.hero-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: #111;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+
+/* --------------------------------------------------
+   ACTIVE BUTTON STYLES — BRAND PURPLE (override)
+-------------------------------------------------- */
+
+.tone-btn.active,
+.persona-btn.active {
+  background-color: #703fe0;       /* brand purple */
+  color: #ffffff !important;
+  border-color: #703fe0;
+}
+
+/* When active, keep solid purple on hover */
+.tone-btn.active:hover,
+.persona-btn.active:hover {
+  background-color: #703fe0;
+  color: #fff;
 }

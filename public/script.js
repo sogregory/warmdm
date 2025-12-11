@@ -5,8 +5,8 @@
 // ----------------------------------------------------
 // State
 // ----------------------------------------------------
-let selectedTone = "Warm";
-let selectedPersona = "Default";
+let selectedTone = "Warm";           // Default tone
+let selectedPersona = "Default";     // Default persona
 
 
 // ----------------------------------------------------
@@ -38,7 +38,7 @@ personaButtons.forEach((btn) => {
 
 
 // ----------------------------------------------------
-// Tooltip Handling
+// Tooltip Handling (simple)
 // ----------------------------------------------------
 const tooltipIcon = document.getElementById("unfilteredTooltip");
 if (tooltipIcon) {

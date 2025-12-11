@@ -69,6 +69,7 @@ body {
 }
 
 #inputMessage {
+  margin-bottom: 20px; /* NEW spacing for better flow */
   width: 100%;
   height: 200px;
   padding: 14px;
@@ -89,7 +90,7 @@ body {
 }
 
 .controls {
-  margin-top: 20px;
+  margin-top: 24px; /* increased from 20px for smoother vertical rhythm */
 }
 
 
@@ -173,7 +174,7 @@ body {
   font-size: 15px;
   font-weight: 600;
   transition: background 0.2s ease, box-shadow 0.15s ease, transform 0.1s ease;
-  margin: 20px auto 0;            /* centers the button horizontally */
+  margin: 28px auto 0;            /* slightly more breathing room */
   display: block;                 /* ensures centering works */
 }
 

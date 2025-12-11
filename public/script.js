@@ -100,7 +100,7 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
       data?.choices?.[0]?.message?.content ||
       "No response — try again.";
 
-    output.innerHTML = `<pre>${text}</pre>`;
+    output.innerHTML = `<pre class="fade-in">${text}</pre>`;
     scrollToOutput();
 
   } catch (err) {

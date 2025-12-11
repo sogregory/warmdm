@@ -178,8 +178,8 @@ body {
 }
 
 .primary-btn:hover {
-  background: #5e33c0;
-  box-shadow: 0 4px 10px rgba(112, 63, 224, 0.25);
+  background: #5e33c0; /* slightly darker purple */
+  box-shadow: 0 4px 12px rgba(112, 63, 224, 0.28);
   transform: translateY(-1px);
 }
 

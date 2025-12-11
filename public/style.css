@@ -163,8 +163,8 @@ body {
 ----------------------------------------- */
 
 .primary-btn {
-  width: 100%;
-  background: #703fe0;             /* brand purple */
+  width: 240px;                   /* button-like width */
+  background: #703fe0;
   color: #fff;
   padding: 14px;
   border-radius: 8px;
@@ -172,16 +172,16 @@ body {
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  margin-top: 10px;
   transition: background 0.2s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  margin: 20px auto 0;            /* centers the button horizontally */
+  display: block;                 /* ensures centering works */
 }
 
 .primary-btn:hover {
-  background: #5e33c0;             /* slightly darker on hover */
+  background: #5e33c0;
   box-shadow: 0 4px 10px rgba(112, 63, 224, 0.25);
   transform: translateY(-1px);
 }
-
 
 /* ----------------------------------------
    Output Section

@@ -190,13 +190,13 @@ body {
 .output-section {
   background: #fafafa;
   border: 1px solid #ddd;
-  padding: 18px;
+  padding: 24px;        /* increased from 18px */
   border-radius: 8px;
   min-height: 60px;
   margin-top: 24px;
   white-space: pre-wrap;
   overflow-y: auto;
-  max-height: 380px; /* prevents overflow downwards */
+  max-height: 380px;
 }
 
 /* Prevent sideways scroll bug */

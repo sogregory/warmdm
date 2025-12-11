@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://warmdm.com/sitemap.xml

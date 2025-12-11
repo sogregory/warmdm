@@ -191,6 +191,7 @@ body {
 ----------------------------------------- */
 
 .output-section {
+  display: none; /* hide on first page load */
   background: #fafafa;
   border: 1px solid #ddd;
   padding: 24px;        /* increased from 18px */

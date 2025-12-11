@@ -81,6 +81,7 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
 
   const output = document.getElementById("outputSection");
   output.innerHTML = '<p class="loader-dots">Rewriting</p>';
+  output.style.display = "block";
 
   try {
     const response = await fetch("/api/rewrite", {
@@ -101,6 +102,7 @@ document.getElementById("rewriteBtn").addEventListener("click", async () => {
       "No response — try again.";
 
     output.innerHTML = `<pre class="fade-in">${text}</pre>`;
+    output.style.display = "block";
     scrollToOutput();
 
   } catch (err) {

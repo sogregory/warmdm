@@ -388,6 +388,23 @@ body {
   text-decoration: underline;
 }
 
+.founder-contact {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #666;
+}
+
+.founder-contact a {
+  color: #703fe0; /* brand purple */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.founder-contact a:hover {
+  text-decoration: underline;
+}
+
 
 /* --------------------------------------------------
    HERO HEADER — Center aligned branding (Purple Brand)

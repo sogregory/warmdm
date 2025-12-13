@@ -404,6 +404,18 @@ body {
 .founder-contact a:hover {
   text-decoration: underline;
 }
+.founder-twitter-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.twitter-icon {
+  font-size: 11px;
+  position: relative;
+  top: -0.5px;
+}
+
 
 
 /* --------------------------------------------------

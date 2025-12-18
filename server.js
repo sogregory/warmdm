@@ -17,6 +17,19 @@ const posthog = new PostHog(process.env.POSTHOG_API_KEY, {
 // --------------------
 
 const app = express();
+
+/* 🔒 CANONICAL REDIRECT — MUST BE FIRST */
+app.use((req, res, next) => {
+  const host = req.headers.host;
+  const proto = req.headers["x-forwarded-proto"];
+
+  if (proto !== "https" || host !== "warmdm.com") {
+    return res.redirect(301, `https://warmdm.com${req.originalUrl}`);
+  }
+
+  next();
+});
+
 app.use(express.json());
 
 // Serve frontend

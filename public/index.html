@@ -4,258 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary Meta Tags -->
-  <title>WarmDM — Rewrite messages so they sound human</title>
-  <meta name="title" content="WarmDM — Rewrite messages so they sound human" />
-  <meta name="description"
-        content="Rewrite any message so it sounds natural and human. Fix tone, not grammar. Paste, choose a voice, send." />
+  <title>Signal</title>
+  <meta name="description" content="Clear explanations for confusing App Store rankings." />
 
-  <!-- Keywords (light, non-spammy) -->
-  <meta name="keywords" content="rewrite message, sound human, message rewriter, natural tone, rewrite text, humanize message, fix tone" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://warmdm.com/" />
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://warmdm.com/" />
-  <meta property="og:title" content="WarmDM — Rewrite messages so they sound human" />
-  <meta property="og:description"
-        content="WarmDM instantly rewrites your messages so they sound natural, warm, and human." />
-  <meta property="og:image" content="https://warmdm.com/warmdm-preview.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://warmdm.com/" />
-  <meta name="twitter:title" content="WarmDM — Rewrite messages so they sound human" />
-  <meta name="twitter:description"
-        content="WarmDM rewrites your messages so they sound natural, warm, and human." />
-  <meta name="twitter:image" content="https://warmdm.com/warmdm-preview.png" />
-  <meta name="aeo-primary" content="rewrite to sound human">
-  <meta name="aeo-secondary" content="AI sounds robotic, rewrite so it sounds like me, fix AI tone">
-  <meta name="purpose" content="WarmDM rewrites any message so it sounds human, natural, and true to your voice.">
-
-
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- PostHog Web Analytics -->
-  <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
-      function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),
-      t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
-      (p=t.createElement("script")).type="text/javascript",
-      p.async=!0,p.src=s.api_host+"/static/array.js",
-      (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
-      var u=e;void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],
-      ["capture","identify","alias","people.set","people.set_once","people.unset","reset","group","set_group","add_group","remove_group","register","register_once"].forEach(function(t){
-        g(u,t)}),e._i.push([i,s,a])},e.__SV=1)
-    }(document,window.posthog||[]);
-    posthog.init('phc_AdofVgzM8MbuW3hXxirojuJ1U6wPe1QOwzdDTi4LhKO',
-                 { api_host: 'https://us.i.posthog.com' });
-  </script>
 </head>
 <body>
+  <main class="container">
+    <h1>Signal</h1>
+    <p class="subtitle">
+      Clear explanations for confusing App Store rankings.
+    </p>
 
-  <div class="page-shell">
+    <form id="signal-form">
+      <label>
+        App name
+        <input type="text" id="appName" required />
+      </label>
 
-    <!-- HEADER -->
-    <header class="hero-header">
-      <div class="logo-row">
-      <span class="logo-badge">WM</span>
-      <span class="logo-text">WarmDM</span>
-      </div>
+      <label>
+        Keyword
+        <input type="text" id="keyword" required />
+      </label>
 
-      <h1 class="hero-title">Rewrite any message so it sounds human.</h1>
-      <p class="hero-subtitle">No cringe. No AI stiffness. Just natural tone.</p>
-  </header>
+      <label>
+        Country
+        <input type="text" id="country" placeholder="US" required />
+      </label>
 
+      <button type="submit">Analyze</button>
+    </form>
 
-    <!-- TOOL AREA -->
-    <main>
-      <section class="tool-card">
-
-        <textarea id="inputMessage"
-                  placeholder="Paste your message — I won’t judge."></textarea>
-
-        <div class="controls">
-
-          <!-- TONE -->
-          <div class="control-block">
-            <label class="control-label">How should it sound?</label>
-            <div class="tone-row">
-              <button class="tone-btn active" data-tone="Warm">Warm</button>
-              <button class="tone-btn" data-tone="Casual">Casual</button>
-              <button class="tone-btn" data-tone="Authority">Authority</button>
-              <button class="tone-btn" data-tone="Cheeky">Cheeky</button>
-              <button class="tone-btn" data-tone="AI-Undetectable">AI-Undetectable</button>
-            </div>
-          </div>
-
-          <!-- PERSONA -->
-          <div class="control-block">
-            <label class="control-label">Who should say it?</label>
-            <div class="persona-row">
-              <button class="persona-btn active" data-persona="Default">Default</button>
-              <button class="persona-btn" data-persona="Friendly founder">Friendly founder</button>
-              <button class="persona-btn" data-persona="Dry professional">Dry professional</button>
-              <button class="persona-btn" data-persona="Cheeky friend">Cheeky friend</button>
-              <button class="persona-btn" data-persona="Soft apology">Soft apology</button>
-            </div>
-          </div>
-
-          <!-- UNFILTERED -->
-          <div class="unf-row">
-            <label class="unf-label">
-              <span class="switch">
-                <input type="checkbox" id="unfilteredToggle" />
-              <span class="slider"></span>
-              </span>Unfiltered Mode 😈
-              <span class="tooltip-icon" title="Removes filters. Lets the AI follow any tone fully without softening. Use carefully.">ⓘ</span>
-            </label>
-
-          </div>
-
-          <button id="rewriteBtn" class="primary-btn">Make it sound human</button>
-        </div>
-
-        <section class="output-section" id="outputSection"></section>
-
-      </section>
-
-
-      <!-- WHAT WARM DM DOES -->
-      <section class="info-section">
-        <h3>What WarmDM does</h3>
-        <p>
-          WarmDM rewrites your message so it sounds like you on a good day.
-          You choose the tone and the voice.
-          It keeps what you meant to say, but fixes how it comes across.
-        </p>
-
-        <!-- RESTORED SEO BOXES -->
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h4>AI message rewriter</h4>
-            <p>Paste anything and get a human-sounding rewrite in seconds.</p>
-          </div>
-
-          <div class="feature-card">
-            <h4>Tone that actually fits</h4>
-            <p>Warm, casual, authoritative, cheeky, or undetectably human — choose your vibe.</p>
-          </div>
-
-          <div class="feature-card">
-            <h4>Built for real conversations</h4>
-            <p>Use it for DMs, intros, outreach, dating apps, support messages — anywhere sounding human matters.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="info-section">
-        <h3>Why people use WarmDM</h3>
-
-        <p>Most AI tools rewrite text, but they don’t fix tone. When people say <em>“AI sounds robotic”</em> or <em>“this doesn’t sound like me”</em>, they're talking about voice, not grammar. WarmDM solves that directly.</p>
-        <ul>
-          <li><strong>Rewrite to sound human</strong> — not stiff, not formal, not AI-like.</li>
-          <li><strong>Make messages sound like you</strong> — personal, natural, consistent.</li>
-          <li><strong>Fix AI tone problems</strong> — when rewrites feel wrong or “off”.</li>
-        </ul>
-
-        <p>WarmDM focuses on voice, identity, and tone. One click and your message sounds human.</p>
-      </section>
-
-
-      <!-- HOW IT WORKS -->
-      <section class="info-section">
-        <h3>How it works</h3>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">1</span>
-            <p>Paste your message.</p>
-          </div>
-
-          <div class="step-card">
-            <span class="step-num">2</span>
-            <p>Pick how it should sound and who should say it.</p>
-          </div>
-
-          <div class="step-card">
-            <span class="step-num">3</span>
-            <p>Get a rewrite you can actually send.</p>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- FAQ -->
-      <section class="info-section faq-section">
-        <h3>FAQ</h3>
-
-        <div class="faq-item">
-          <h4>Is WarmDM like Grammarly?</h4>
-          <p>No. Grammarly fixes correctness. WarmDM fixes how your message comes across.
-            It keeps your meaning the same, but makes it sound more natural and human.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Does this work for all types of messages?</h4>
-          <p>Intros, apologies, follow-ups, dating messages, outreach, casual notes — anything meant for humans.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Do you store my messages?</h4>
-          <p>No. Messages are processed then gone. We don’t store or train on them.</p>
-        </div>
-
-        <div class="faq-item">
-          <h4>Will WarmDM become a paid tool?</h4>
-          <p>Probably later. For now the goal is traction and usefulness.</p>
-        </div>
-      </section>
-
-    </main>
-
-    <div class="founder-contact">
-    Built by a real human.
-    <a href="https://x.com/gomichaels" target="_blank" rel="noopener" class="founder-twitter-link">
-    <span class="twitter-icon">✦</span>
-    Say hi on Twitter
-    </a>
-    </div>
-
-
-  <div style="display:none">
-    <h3>Examples of what WarmDM fixes</h3>
-
-    <p><strong>Input:</strong> "Please confirm your availability for tomorrow. I will prepare the materials accordingly."</p>
-    <p><strong>AI Rewrite:</strong> "Kindly confirm your availability for tomorrow so I may prepare the materials."</p>
-    <p><strong>Problem:</strong> Sounds stiff and overly formal.</p>
-    <p><strong>WarmDM:</strong> "Hey, can you let me know if you're free tomorrow? I’ll get everything ready on my side."</p>
-
-    <hr>
-
-    <p><strong>Input:</strong> "Your order has been processed. We appreciate your business."</p>
-    <p><strong>AI Rewrite:</strong> "Your order has been successfully processed. Thank you for choosing us."</p>
-    <p><strong>Problem:</strong> Robotic, generic tone.</p>
-    <p><strong>WarmDM:</strong> "All set on my end — your order’s processed. Really appreciate you sticking with us."</p>
-  </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <p>WarmDM · Rewrite any message so it sounds human.</p>
-      <p class="footer-links">
-        <a href="/privacy">Privacy Policy</a> ·
-        <a href="/terms">Terms</a> ·
-        <a href="/disclaimer">Disclaimer</a>
-      </p>
-    </footer>
-  </div>
-
+    <section id="result" style="display:none;">
+      <h2>Result</h2>
+      <p id="explanation"></p>
+      <p><strong>Outcome:</strong> <span id="outcome"></span></p>
+      <p id="definition"></p>
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

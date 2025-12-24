@@ -1,122 +1,24 @@
-//
-// WarmDM — Frontend Logic (Updated with Auto-Scroll + Loader Dots)
-//
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("signal-form");
+  const result = document.getElementById("result");
 
-// ----------------------------------------------------
-// State
-// ----------------------------------------------------
-let selectedTone = "Warm";           // Default tone
-let selectedPersona = "Default";     // Default persona
+  const explanationEl = document.getElementById("explanation");
+  const outcomeEl = document.getElementById("outcome");
+  const definitionEl = document.getElementById("definition");
 
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-// ----------------------------------------------------
-// Tone Button Handling
-// ----------------------------------------------------
-const toneButtons = document.querySelectorAll(".tone-btn");
+    explanationEl.textContent =
+      "This ranking change isn’t being driven by reviews, app age, featuring, or ads. " +
+      "For this keyword, Apple is prioritizing how users behave after seeing apps in search — " +
+      "which apps they choose and whether they keep them installed.";
 
-toneButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    toneButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    selectedTone = btn.dataset.tone;
+    outcomeEl.textContent = "Search Satisfaction Gap";
+
+    definitionEl.textContent =
+      "Competing apps are performing better after users see search results, not because of age or review volume.";
+
+    result.style.display = "block";
   });
-});
-
-
-// ----------------------------------------------------
-// Persona Button Handling
-// ----------------------------------------------------
-const personaButtons = document.querySelectorAll(".persona-btn");
-
-personaButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    personaButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    selectedPersona = btn.dataset.persona;
-  });
-});
-
-
-// ----------------------------------------------------
-// Tooltip Handling (simple)
-// ----------------------------------------------------
-const tooltipIcon = document.getElementById("unfilteredTooltip");
-if (tooltipIcon) {
-  tooltipIcon.addEventListener("mouseenter", () => {
-    tooltipIcon.setAttribute(
-      "title",
-      "Removes filters and guardrails. Use only if you want a version without safety softening."
-    );
-  });
-}
-
-
-// ----------------------------------------------------
-// Auto-Scroll to Output
-// ----------------------------------------------------
-function scrollToOutput() {
-  const outputSection = document.getElementById("outputSection");
-  if (!outputSection) return;
-
-  outputSection.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-}
-
-
-// ----------------------------------------------------
-// Main Rewrite
-// ----------------------------------------------------
-document.getElementById("rewriteBtn").addEventListener("click", async () => {
-  const msg = document.getElementById("inputMessage").value.trim();
-  const mode = document.getElementById("unfilteredToggle").checked
-    ? "unfiltered"
-    : "safe";
-
-  if (!msg) {
-    alert("Paste a message first.");
-    return;
-  }
-
-  const output = document.getElementById("outputSection");
-  output.innerHTML = '<p class="loader-dots">Rewriting</p>';
-  output.style.display = "block";
-
-  try {
-    const response = await fetch("/api/rewrite", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: msg,
-        tone: selectedTone,
-        persona: selectedPersona,
-        mode
-      })
-    });
-
-    const data = await response.json();
-
-    const text =
-      data?.choices?.[0]?.message?.content ||
-      "No response — try again.";
-
-    output.innerHTML = `<pre class="fade-in">${text}</pre>`;
-    output.style.display = "block";
-    scrollToOutput();
-
-  } catch (err) {
-    console.error(err);
-    output.innerHTML = "<p>Error — could not rewrite message.</p>";
-  }
-});
-
-
-// ----------------------------------------------------
-// Cmd+Enter / Ctrl+Enter Shortcut
-// ----------------------------------------------------
-document.addEventListener("keydown", (e) => {
-  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-    document.getElementById("rewriteBtn").click();
-  }
 });

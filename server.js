@@ -124,3 +124,7 @@ process.on("SIGINT", async () => {
   await posthog.shutdown();
   process.exit();
 });
+
+app.use((req, res) => {
+  res.status(404).sendFile(__dirname + "/public/404.html");
+});
